@@ -5,6 +5,7 @@ import {
   faArrowLeft,
   faArrowRight,
   faArrowUpRightFromSquare,
+  faDownload,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { caseStudies, siteConfig } from "@/lib/content";
@@ -147,31 +148,58 @@ export default async function CaseStudyPage({
             <FontAwesomeIcon icon={faArrowLeft} />
             <span>Back to portfolio</span>
           </Link>
-          <div className="flex gap-4">
-            {study.liveUrl && !study.liveUrl.startsWith("[EDIT") && (
-              <a
-                href={study.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="case-study-details__link flex items-center gap-1.5 focus-ring"
-              >
-                <span>Live Site</span>
-                <FontAwesomeIcon
-                  icon={faArrowUpRightFromSquare}
-                  className="w-3.5 h-3.5"
-                />
-              </a>
-            )}
-            {study.githubUrl && !study.githubUrl.startsWith("[EDIT") && (
-              <a
-                href={study.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="case-study-details__link flex items-center gap-1.5 focus-ring"
-              >
-                <span>GitHub</span>
-                <FontAwesomeIcon icon={faGithub} className="w-3.5 h-3.5" />
-              </a>
+          <div className="flex flex-wrap gap-3">
+            {study.platforms ? (
+              study.platforms.map((platform) => {
+                const isDownload =
+                  platform.label.toLowerCase().includes("android") ||
+                  platform.label.toLowerCase().includes("apk") ||
+                  platform.url.endsWith(".apk");
+                const isGithub = platform.url.toLowerCase().includes("github.com");
+                return (
+                  <a
+                    key={platform.label}
+                    href={platform.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="case-study-details__link flex items-center gap-1.5 focus-ring"
+                  >
+                    <span>{platform.label}</span>
+                    <FontAwesomeIcon
+                      icon={isDownload ? faDownload : isGithub ? faGithub : faArrowUpRightFromSquare}
+                      className="w-3.5 h-3.5"
+                    />
+                  </a>
+                );
+              })
+            ) : (
+              <>
+                {study.liveUrl && !study.liveUrl.startsWith("[EDIT") && (
+                  <a
+                    href={study.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="case-study-details__link flex items-center gap-1.5 focus-ring"
+                  >
+                    <span>Live Site</span>
+                    <FontAwesomeIcon
+                      icon={faArrowUpRightFromSquare}
+                      className="w-3.5 h-3.5"
+                    />
+                  </a>
+                )}
+                {study.githubUrl && !study.githubUrl.startsWith("[EDIT") && (
+                  <a
+                    href={study.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="case-study-details__link flex items-center gap-1.5 focus-ring"
+                  >
+                    <span>GitHub</span>
+                    <FontAwesomeIcon icon={faGithub} className="w-3.5 h-3.5" />
+                  </a>
+                )}
+              </>
             )}
           </div>
         </div>
@@ -179,7 +207,6 @@ export default async function CaseStudyPage({
 
       {/* Editorial Title Header */}
       <section className="case-study-details__title-section container-content py-12 lg:py-16">
-        <span className="case-study-details__role-tag">{study.role}</span>
         <h1 className="case-study-details__title heading-hero font-serif mt-4">
           {study.name}
         </h1>
@@ -200,9 +227,7 @@ export default async function CaseStudyPage({
 
           {/* 2. The Problem */}
           <section id="problem" className="space-y-4">
-            <h2 className="case-study-details__section-label">
-              The Problem
-            </h2>
+            <h2 className="case-study-details__section-label">The Problem</h2>
             <p className="case-study-details__text">{study.details.problem}</p>
           </section>
 
@@ -260,18 +285,17 @@ export default async function CaseStudyPage({
 
           {/* 5. Architecture */}
           <section id="architecture" className="space-y-6">
-            <h2 className="case-study-details__section-label">
-              Architecture
-            </h2>
+            <h2 className="case-study-details__section-label">Architecture</h2>
 
-            {study.details.architecture.diagramSvg && (
-              <div
-                className="case-study-details__svg-wrapper"
-                dangerouslySetInnerHTML={{
-                  __html: study.details.architecture.diagramSvg,
-                }}
-              />
-            )}
+            {study.details.architecture.diagramSvg &&
+              study.details.architecture.diagramSvg.trim() !== "" && (
+                <div
+                  className="case-study-details__svg-wrapper"
+                  dangerouslySetInnerHTML={{
+                    __html: study.details.architecture.diagramSvg,
+                  }}
+                />
+              )}
 
             <div className="space-y-4">
               <div>

@@ -6,6 +6,7 @@ import { fadeUp } from "@/lib/animations";
 import { experience } from "@/lib/content";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { Tag } from "@/components/ui/Tag";
 import "./Experience.css";
 
 export function Experience() {
@@ -24,12 +25,16 @@ export function Experience() {
           className="experience__header"
         >
           <SectionLabel>Experience</SectionLabel>
-          <h2 className="heading-section">Where I&apos;ve shipped</h2>
+          <h2 className="heading-section">Professional Experience</h2>
         </motion.div>
 
         <div className="experience__container mt-12 lg:mt-16">
           {/* Tabs Navigation */}
-          <div className="experience__tabs" role="tablist" aria-label="Job history tabs">
+          <div
+            className="experience__tabs"
+            role="tablist"
+            aria-label="Job history tabs"
+          >
             {experience.map((job, idx) => {
               const isActive = idx === activeIndex;
               return (
@@ -47,7 +52,11 @@ export function Experience() {
                     <motion.div
                       layoutId="activeTabIndicator"
                       className="experience__tab-indicator"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 380,
+                        damping: 30,
+                      }}
                     />
                   )}
                   <span className="experience__tab-text">{job.company}</span>
@@ -73,18 +82,37 @@ export function Experience() {
                 <div className="experience__panel-header">
                   <div className="experience__role-meta">
                     <h3 className="experience__role">{activeJob.role}</h3>
-                    <span className="experience__company-name">@ {activeJob.company}</span>
+                    <span className="experience__company-name">
+                      @ {activeJob.company}
+                    </span>
                   </div>
                   <span className="experience__dates">{activeJob.dates}</span>
                 </div>
 
-                <ul className="experience__bullets mt-8 space-y-4">
+                {activeJob.summary && (
+                  <p className="experience__summary mt-4 body-md">
+                    {activeJob.summary}
+                  </p>
+                )}
+
+                <ul className="experience__bullets mt-6 space-y-4">
                   {activeJob.bullets.map((bullet, bIdx) => (
-                    <li key={`bullet-${activeIndex}-${bIdx}`} className="experience__bullet">
+                    <li
+                      key={`bullet-${activeIndex}-${bIdx}`}
+                      className="experience__bullet"
+                    >
                       {bullet}
                     </li>
                   ))}
                 </ul>
+
+                {activeJob.techStack && (
+                  <div className="experience__tech-stack flex flex-wrap gap-2 mt-6 pt-4">
+                    {activeJob.techStack.map((tech) => (
+                      <Tag key={tech}>{tech}</Tag>
+                    ))}
+                  </div>
+                )}
               </motion.div>
             </AnimatePresence>
           </div>

@@ -1,6 +1,6 @@
 export const aboutContent = {
-  main: `[EDIT: One strong first-person paragraph — who you are, what you build, and what you're looking for (full-time, contract, or both). Keep it specific, not generic.]`,
-  supporting: `[EDIT: What draws you to building software and AI products — the kinds of problems you like, what you're exploring now in AI, and how you work with teams or clients.]`,
+  main: `I'm a software engineer who enjoys building full-stack applications that solve real problems and make everyday work a little easier. I especially enjoy automating repetitive tasks and turning ideas into products people can rely on. My long-term goal is simple: build software that people genuinely find useful, contribute to open source, and create products that make a positive impact.`,
+  supporting: `Recently, I've been focused on AI engineering and building domain-specific AI assistants that help people with real tasks—not just general conversations. I'm fascinated by how AI is changing the way we work, learn, and solve problems, and I enjoy exploring technologies like tool calling, RAG, LangChain, and agentic systems to build practical, intelligent software.`,
 };
 
 export const trustStrip = {
@@ -23,67 +23,76 @@ export type TechStackGroup = {
 export const techStack: TechStackGroup[] = [
   {
     id: "ship",
-    label: "Ship products with",
-    description:
-      "Languages and frameworks I reach for when building features end-to-end.",
+    label: "Application Development",
+    description: "Frameworks and languages I use to build modern applications.",
     items: [
-      { name: "React" },
+      { name: "Angular" },
+      { name: "Bootstrap" },
+      { name: "FastAPI" },
+      { name: "Flutter" },
+      { name: "Java" },
+      { name: "MySQL" },
       { name: "Next.js" },
-      { name: "TypeScript" },
       { name: "Node.js" },
-      { name: "Python" },
       { name: "PostgreSQL" },
+      { name: "Python" },
+      { name: "React" },
+      { name: "Spring Boot" },
+      { name: "TypeScript" },
     ],
   },
   {
     id: "scale",
-    label: "Scale and deploy with",
+    label: "Infrastructure & Deployment",
     description:
-      "Infrastructure and tooling that keeps products reliable in production.",
+      "Cloud services, tooling, and platforms used to deploy and operate software.",
     items: [
       { name: "AWS" },
+      { name: "Cloudflare" },
       { name: "Docker" },
-      { name: "CI/CD" },
-      { name: "Vercel" },
+      { name: "Git" },
+      { name: "GitHub" },
+      { name: "Kubernetes" },
       { name: "Redis" },
-      { name: "Linux" },
+      { name: "Vercel" },
     ],
   },
   {
     id: "ai",
-    label: "Increasingly building with",
+    label: "AI & Intelligent Systems",
     description:
-      "AI tooling I'm actively learning and applying to real product problems.",
+      "Technologies I'm using to build and explore AI-powered applications.",
     items: [
-      { name: "OpenAI API" },
+      { name: "Chroma" },
+      { name: "Hugging Face" },
       { name: "LangChain" },
+      { name: "Ollama" },
+      { name: "OpenAI API" },
+      { name: "Pinecone" },
       { name: "RAG pipelines" },
-      { name: "Vector DBs" },
-      { name: "Prompt engineering" },
-      { name: "Fine-tuning" },
     ],
   },
 ];
 
 export const principles = [
   {
-    title: "Clarity Before Code",
+    title: "Think Before Building",
     description:
-      "I spend time defining data models, system boundaries, and api contracts before writing code. A clear model prevents downstream implementation bugs.",
+      "I like to understand the problem before jumping into code. A little planning early usually saves a lot of rework later.",
   },
   {
-    title: "Production Mindset First",
+    title: "Keep It Simple",
     description:
-      "No feature is complete without logging, error boundaries, unit tests, and performance profiles. Writing code is only half the battle.",
+      "I prefer simple, readable code over clever solutions. Clear logic is easier to maintain, debug, and improve as products grow.",
   },
   {
-    title: "Pragmatic Tool Selection",
+    title: "Learn Every Project",
     description:
-      "I choose boring, stable technologies unless the problem domain specifically demands a specialized tool. Reliable architecture minimizes operations overhead.",
+      "Every project teaches me something new. I take those lessons forward to build better software with every project.",
   },
   {
-    title: "Iterative Refinement",
+    title: "Improve Continuously",
     description:
-      "I believe in shipping working micro-features early to solicit user feedback, then refactoring and optimizing performance under real workloads.",
+      "I don't expect the first version to be perfect. I build, gather feedback, and keep improving through small, meaningful iterations.",
   },
 ];

@@ -5,8 +5,11 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
+  faEnvelopeOpen,
   faLocationDot,
+  faMapLocationDot,
   faPhone,
+  faPhoneVolume,
 } from "@fortawesome/free-solid-svg-icons";
 import { SocialLinks } from "@/components/icons/SocialLinks";
 import { fadeUp } from "@/lib/animations";
@@ -26,20 +29,20 @@ export function Contact() {
     e.preventDefault();
     setStatus("sending");
 
-    const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form));
-
     try {
+      const formData = new FormData(e.currentTarget);
       const res = await fetch("/api/contact", {
         method: "POST",
+        body: JSON.stringify(Object.fromEntries(formData)),
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
       });
 
-      if (!res.ok) throw new Error("Failed to send");
-
-      setStatus("sent");
-      form.reset();
+      if (res.ok) {
+        setStatus("sent");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus("error");
+      }
     } catch {
       setStatus("error");
     }
@@ -48,10 +51,10 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="contact lg:h-screen lg:min-h-[700px] flex items-center py-16 lg:py-0"
+      className="contact flex flex-col justify-between pt-8 lg:pt-12 pb-0 gap-12"
     >
-      <div className="container-content w-full">
-        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 items-center">
+      <div className="container-content w-full flex-grow flex items-center">
+        <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20 items-center w-full">
           {/* Left Column: Header & Info styled via Grid, no margins */}
           <motion.div
             variants={fadeUp}
@@ -61,13 +64,13 @@ export function Contact() {
             className="grid gap-8"
           >
             <div className="grid gap-3">
-              <SectionLabel>Contact</SectionLabel>
-              <h2 className="heading-section">Let&apos;s talk</h2>
-              <p className="text-secondary max-w-md">
-                Looking for an engineer to build your next product? Need help
-                scaling an existing one? Or just want to discuss AI, agents, and
-                modern software? Send me a message—I&apos;m always happy to
-                connect.
+              <h2 className="heading-section">
+                Ready to build something meaningful?
+              </h2>
+              <p className="body-lg text-secondary max-w-md">
+                Whether it's a full-time opportunity, a freelance project, or
+                just a conversation about software and AI, I'd love to hear from
+                you.
               </p>
             </div>
 
@@ -77,7 +80,16 @@ export function Contact() {
                 className="contact__info-link focus-ring"
               >
                 <span className="contact__info-icon">
-                  <FontAwesomeIcon icon={faEnvelope} />
+                  <span className="contact__envelope-wrapper">
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      className="contact__icon-email contact__icon-email--closed"
+                    />
+                    <FontAwesomeIcon
+                      icon={faEnvelopeOpen}
+                      className="contact__icon-email contact__icon-email--open"
+                    />
+                  </span>
                 </span>
                 <span className="contact__info-text">{siteConfig.email}</span>
               </a>
@@ -87,7 +99,16 @@ export function Contact() {
                 className="contact__info-link focus-ring"
               >
                 <span className="contact__info-icon">
-                  <FontAwesomeIcon icon={faPhone} />
+                  <span className="contact__phone-wrapper">
+                    <FontAwesomeIcon
+                      icon={faPhone}
+                      className="contact__icon-phone contact__icon-phone--default"
+                    />
+                    <FontAwesomeIcon
+                      icon={faPhoneVolume}
+                      className="contact__icon-phone contact__icon-phone--active"
+                    />
+                  </span>
                 </span>
                 <span className="contact__info-text">{siteConfig.phone}</span>
               </a>
@@ -101,16 +122,21 @@ export function Contact() {
                 className="contact__info-link focus-ring"
               >
                 <span className="contact__info-icon">
-                  <FontAwesomeIcon icon={faLocationDot} />
+                  <span className="contact__location-wrapper">
+                    <FontAwesomeIcon
+                      icon={faLocationDot}
+                      className="contact__icon-location contact__icon-location--default"
+                    />
+                    <FontAwesomeIcon
+                      icon={faMapLocationDot}
+                      className="contact__icon-location contact__icon-location--active"
+                    />
+                  </span>
                 </span>
                 <span className="contact__info-text">
                   {siteConfig.location}
                 </span>
               </a>
-            </div>
-
-            <div className="flex">
-              <SocialLinks />
             </div>
           </motion.div>
 
@@ -206,6 +232,24 @@ export function Contact() {
               )}
             </form>
           </motion.div>
+        </div>
+      </div>
+
+      {/* Integrated Closing Footer */}
+      <div className="container-content w-full mt-auto pt-6 pb-6 lg:pt-8 lg:pb-8">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <span className="footer__appreciation text-secondary block mb-1 italic font-semibold text-xl">
+              Thanks for stopping by. I appreciate you taking the time to
+              explore my work.
+            </span>
+            <p className="footer__copyright mt-1 text-xs text-muted">
+              © {new Date().getFullYear()} {siteConfig.name}. All rights
+              reserved.
+            </p>
+          </div>
+
+          <SocialLinks />
         </div>
       </div>
     </section>

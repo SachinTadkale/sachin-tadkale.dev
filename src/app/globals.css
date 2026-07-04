@@ -22,18 +22,18 @@
   --font-serif: var(--font-newsreader), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
 
-  --text-hero-mobile: 2.5rem;
-  --text-hero-desktop: 4rem;
-  --text-section-mobile: 1.875rem;
+  --text-hero-mobile: 2rem;
+  --text-hero-desktop: 2.5rem;
+  --text-section-mobile: 2rem;
   --text-section-desktop: 2.5rem;
   --text-subsection-mobile: 1.25rem;
   --text-subsection-desktop: 1.5rem;
   --text-card-mobile: 1.25rem;
   --text-card-desktop: 1.75rem;
-  --text-body-lg-mobile: 1rem;
-  --text-body-lg-desktop: 1.125rem;
-  --text-body: 1rem;
-  --text-body-sm: 0.9375rem;
+  --text-body-lg-mobile: 0.965rem;
+  --text-body-lg-desktop: 0.965rem;
+  --text-body: 0.965rem;
+  --text-body-sm: 0.965rem;
   --text-caption: 0.8125rem;
   --text-meta: 0.6875rem;
 
@@ -49,8 +49,8 @@
   --container-wide: 87.5rem;
   --prose-max: 65ch;
 
-  --section-padding-mobile: 4rem;
-  --section-padding-desktop: 7.5rem;
+  --section-padding-mobile: 2.5rem;
+  --section-padding-desktop: 4.5rem;
 
   --transition-fast: 200ms ease-out;
   --transition-base: 300ms ease-in-out;
@@ -106,6 +106,7 @@ body {
   line-height: var(--leading-tight);
   letter-spacing: var(--tracking-tight);
   color: var(--color-text-primary);
+  font-weight: 500;
 }
 
 @media (min-width: 1024px) {
@@ -119,6 +120,7 @@ body {
   font-size: var(--text-section-mobile);
   line-height: var(--leading-heading);
   color: var(--color-text-primary);
+  font-weight: 500;
 }
 
 @media (min-width: 1024px) {
@@ -157,6 +159,8 @@ body {
   font-size: var(--text-body-lg-mobile);
   line-height: var(--leading-body);
   color: var(--color-text-secondary);
+  text-align: justify;
+  font-weight: 400;
 }
 
 @media (min-width: 1024px) {
@@ -169,6 +173,8 @@ body {
   font-size: var(--text-body-sm);
   line-height: var(--leading-body);
   color: var(--color-text-secondary);
+  text-align: justify;
+  font-weight: 400;
 }
 
 @media (min-width: 1024px) {
@@ -181,6 +187,8 @@ body {
   font-size: var(--text-body-sm);
   line-height: var(--leading-body);
   color: var(--color-text-secondary);
+  text-align: justify;
+  font-weight: 400;
 }
 
 .caption {
@@ -327,4 +335,10 @@ body {
 .icon-accent {
   color: var(--color-accent);
   flex-shrink: 0;
+}
+
+.tech-icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

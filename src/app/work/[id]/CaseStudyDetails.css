@@ -138,52 +138,60 @@
 /* Challenges Decision Framework */
 .case-study-details__challenge-box {
   border: 1px solid var(--color-border);
-  border-left: 3px solid var(--color-error);
-  padding: 1.5rem;
+  padding: 1.75rem 2rem;
   background-color: var(--color-bg-secondary);
   border-radius: 0;
-  display: grid;
-  gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .case-study-details__challenge-step {
   display: grid;
-  grid-template-columns: 120px 1fr;
+  grid-template-columns: 140px 1fr;
   align-items: start;
   gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.case-study-details__challenge-step:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
 }
 
 .case-study-details__step-tag {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  padding: 0.15rem 0.4rem;
-  width: fit-content;
-  border-radius: 0;
-  background-color: var(--color-bg-primary);
-  text-align: center;
+  color: var(--color-accent);
+  margin-top: 0.125rem;
 }
 
 .case-study-details__step-text {
-  font-size: 0.9375rem;
-  line-height: 1.5;
+  font-size: 0.965rem;
+  line-height: 1.6;
   color: var(--color-text-secondary);
   margin: 0;
 }
 
 .case-study-details__options-list {
   list-style-type: decimal;
-  padding-left: 1.125rem;
+  padding-left: 1.25rem;
+  margin: 0;
 }
 
 .case-study-details__option-item {
-  font-size: 0.875rem;
-  line-height: 1.5;
+  font-size: 0.9375rem;
+  line-height: 1.6;
   color: var(--color-text-secondary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.case-study-details__option-item:last-child {
+  margin-bottom: 0;
 }
 
 /* Metrics Table box */

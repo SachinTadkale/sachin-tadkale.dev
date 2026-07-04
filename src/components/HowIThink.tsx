@@ -3,10 +3,11 @@
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPenRuler,
-  faServer,
-  faWrench,
   faArrowsRotate,
+  faBookOpen,
+  faBrain,
+  faLayerGroup,
+  faLightbulb,
 } from "@fortawesome/free-solid-svg-icons";
 import { fadeUp, staggerContainer } from "@/lib/animations";
 import { principles } from "@/lib/content";
@@ -14,7 +15,7 @@ import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import "./HowIThink.css";
 
-const icons = [faPenRuler, faServer, faWrench, faArrowsRotate];
+const icons = [faBrain, faLayerGroup, faBookOpen, faArrowsRotate];
 
 export function HowIThink() {
   const reducedMotion = useReducedMotion();
@@ -29,10 +30,10 @@ export function HowIThink() {
           viewport={{ once: true, margin: "-80px" }}
         >
           <SectionLabel>How I Think</SectionLabel>
-          <h2 className="heading-section">Principles that guide my work</h2>
+          <h2 className="heading-section">Engineering principles I follow</h2>
           <p className="prose-width body-lg mt-4 text-secondary">
-            Not a process deck — just how I approach problems when building
-            software and AI products.
+            These principles shape how I design, build, and improve
+            software—from small features to complete products.
           </p>
         </motion.div>
 

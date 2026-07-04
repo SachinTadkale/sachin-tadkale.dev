@@ -5,4 +5,12 @@
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-accent);
+  display: inline-flex;
+  align-items: center;
+}
+
+.section-label::before {
+  content: "—";
+  margin-right: 0.5rem;
+  opacity: 0.7;
 }

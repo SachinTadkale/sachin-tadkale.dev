@@ -1,7 +1,6 @@
 import { About } from "@/components/About";
 import { Contact } from "@/components/Contact";
 import { Experience } from "@/components/Experience";
-import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { HowIThink } from "@/components/HowIThink";
 import { Nav } from "@/components/Nav";
@@ -21,7 +20,6 @@ export default function Home() {
         <About />
         <Contact />
       </main>
-      <Footer />
     </>
   );
 }

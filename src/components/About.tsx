@@ -20,11 +20,11 @@ export function About() {
           viewport={{ once: true, margin: "-80px" }}
         >
           <SectionLabel>About</SectionLabel>
-          <h2 className="heading-section">A bit about me</h2>
+          <h2 className="heading-section">Why I Build</h2>
         </motion.div>
 
         <motion.div
-          className="mt-10 grid gap-10 lg:mt-12 lg:grid-cols-2 lg:gap-16"
+          className="mt-10 grid gap-10 lg:mt-12 lg:grid-cols-2 lg:gap-16 text-justify"
           variants={fadeUp}
           initial={reducedMotion ? false : "hidden"}
           whileInView="visible"

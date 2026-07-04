@@ -13,25 +13,22 @@ import "./Hero.css";
 export function Hero() {
   const reducedMotion = useReducedMotion();
   const headlineLines = [
-    "I build reliable, scalable",
-    "software and AI-powered",
-    "products — from idea to production.",
+    "Engineering reliable software today.",
+    "Building intelligent systems for tomorrow.",
   ];
 
   return (
     <section className="hero section-padding pt-32 lg:pt-40">
-      <div className="container-wide">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
-          <div>
+      <div className="container-content">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+          <div className="w-full lg:max-w-[55%]">
             <motion.div
               initial={reducedMotion ? false : "hidden"}
               animate="visible"
               variants={heroLineStagger}
             >
               <motion.div variants={heroLine}>
-                <SectionLabel>
-                  AI Engineer &amp; Software Developer
-                </SectionLabel>
+                <SectionLabel>FULL-STACK SOFTWARE ENGINEER</SectionLabel>
               </motion.div>
 
               <h1 className="heading-hero">
@@ -49,19 +46,20 @@ export function Hero() {
               animate="visible"
               className="prose-width body-lg mt-6"
             >
-              I&apos;m learning and building with modern AI tools — combining
-              solid engineering fundamentals with LLMs, RAG, and
-              production-ready deployments.
+              Full-stack engineer passionate about building products that are
+              simple to use, reliable in production, and ready to grow.
+              Currently expanding into AI applications with LLMs, RAG, and
+              intelligent workflows.
             </motion.p>
 
             <motion.div
               variants={heroFollow}
               initial={reducedMotion ? false : "hidden"}
               animate="visible"
-              className="mt-10 flex flex-wrap items-center gap-4"
+              className="hero__btn-group"
             >
               <Button href="#work" data-cursor="pointer">
-                View My Work
+                Explore Work
               </Button>
               <Button
                 variant="secondary"
@@ -69,7 +67,7 @@ export function Hero() {
                 download
                 data-cursor="pointer"
               >
-                Download Resume
+                View Resume
               </Button>
             </motion.div>
 
@@ -91,7 +89,7 @@ export function Hero() {
               delay: 0.45,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="flex justify-center"
+            className="w-full lg:max-w-[40%] flex justify-center lg:justify-end"
           >
             <div className="hero-image-container">
               {/* Minimalist image placeholder */}

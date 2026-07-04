@@ -86,8 +86,9 @@
 }
 
 .selected-work__tab--active {
-  color: var(--color-accent);
-  font-weight: 600;
+  color: var(--color-accent) !important;
+  font-weight: 700 !important;
+  background-color: var(--color-accent-soft) !important;
 }
 
 /* Underline indicator */
@@ -110,4 +111,11 @@
 .selected-work__panel {
   width: 100%;
   min-height: 380px;
+}
+
+@media (max-width: 639px) {
+  .selected-work__tab {
+    flex: 1 1 0%;
+    text-align: center;
+  }
 }

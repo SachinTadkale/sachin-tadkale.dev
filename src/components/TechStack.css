@@ -11,8 +11,8 @@
   padding: 1.25rem 1.5rem;
   cursor: pointer;
   border-left: 2px solid transparent;
-  transition: 
-    border-color var(--transition-fast), 
+  transition:
+    border-color var(--transition-fast),
     background-color var(--transition-fast);
   display: flex;
   flex-direction: column;
@@ -26,7 +26,12 @@
 
 .tech-stack__tab-btn--active {
   border-left-color: var(--color-accent);
-  background-color: var(--color-bg-secondary);
+  background-color: var(--color-accent-soft) !important;
+}
+
+.tech-stack__tab-btn--active .tech-stack__tab-label {
+  font-weight: 700 !important;
+  color: var(--color-accent);
 }
 
 .tech-stack__tab-label {
@@ -51,12 +56,12 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1.125rem 1.25rem;
+  padding: 0.625rem 1rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-bg-secondary);
   border-radius: 0 !important; /* Strict zero border-radius */
-  transition: 
-    background-color var(--transition-fast), 
+  transition:
+    background-color var(--transition-fast),
     border-color var(--transition-fast),
     transform var(--transition-fast),
     box-shadow var(--transition-fast);

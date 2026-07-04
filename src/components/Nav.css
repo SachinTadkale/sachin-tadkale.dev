@@ -15,7 +15,11 @@
 }
 
 .nav-header--scrolled {
-  background-color: color-mix(in srgb, var(--color-bg-primary) 90%, transparent);
+  background-color: color-mix(
+    in srgb,
+    var(--color-bg-primary) 90%,
+    transparent
+  );
   border-bottom: 0.0625rem solid var(--color-border);
   backdrop-filter: blur(0.75rem);
 }
@@ -51,9 +55,9 @@
   font-weight: 600;
   color: var(--color-accent);
   background-color: transparent;
-  transition: 
-    background-color var(--transition-fast), 
-    border-color var(--transition-fast), 
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
     color var(--transition-fast),
     transform var(--transition-fast),
     box-shadow var(--transition-fast);
@@ -82,19 +86,64 @@
   color: var(--color-accent);
 }
 
-.nav-mobile-panel {
-  border-bottom: 0.0625rem solid var(--color-border);
+.nav-mobile-panel-fs {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
   background-color: var(--color-bg-primary);
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-mobile-link {
-  font-size: 1rem;
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
   color: var(--color-text-primary);
-  transition: color var(--transition-fast);
+  display: block;
+  padding: 0.5rem 0;
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
-.nav-mobile-link:hover {
+.nav-mobile-link:hover,
+.nav-mobile-link:active {
   color: var(--color-accent);
+  transform: translateX(4px);
 }
 
+.nav-mobile-resume-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  border-radius: 0 !important;
+  border: 1px solid var(--color-accent);
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  box-shadow: 0px 0px 0px transparent;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
 
+.nav-mobile-resume-btn:hover,
+.nav-mobile-resume-btn:active {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--color-accent);
+}

@@ -33,10 +33,12 @@ export function TechStack() {
           >
             <div className="space-y-3">
               <SectionLabel>Tech Stack</SectionLabel>
-              <h2 className="heading-section">Tools I use to ship and scale</h2>
-              <p className="text-secondary max-w-md">
-                Grouped by how I actually use them — from daily product work to
-                AI experiments I&apos;m exploring.
+              <h2 className="heading-section">
+                The technologies behind my work
+              </h2>
+              <p className="body-lg text-secondary max-w-md">
+                The technologies I use to build full-stack applications and
+                modern AI solutions.
               </p>
             </div>
 
@@ -78,7 +80,7 @@ export function TechStack() {
                 {activeGroup.items.map((item) => (
                   <div key={item.name} className="tech-stack__grid-item group">
                     <div className="tech-stack__grid-icon">
-                      <TechIcon name={item.name} size={20} />
+                      <TechIcon name={item.name} size={18} />
                     </div>
                     <span className="tech-stack__grid-name">{item.name}</span>
                   </div>

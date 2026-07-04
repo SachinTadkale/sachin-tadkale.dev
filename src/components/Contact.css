@@ -60,7 +60,45 @@
 
 .contact__info-link:hover .contact__info-icon {
   color: var(--color-accent);
-  transform: scale(1.12);
+}
+
+.contact__envelope-wrapper,
+.contact__phone-wrapper,
+.contact__location-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact__icon-email,
+.contact__icon-phone,
+.contact__icon-location {
+  position: absolute;
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+
+.contact__icon-email--open,
+.contact__icon-phone--active,
+.contact__icon-location--active {
+  opacity: 0;
+  transform: scale(0.8) rotate(-10deg);
+}
+
+.contact__info-link:hover .contact__icon-email--closed,
+.contact__info-link:hover .contact__icon-phone--default,
+.contact__info-link:hover .contact__icon-location--default {
+  opacity: 0;
+  transform: scale(0.8) rotate(10deg);
+}
+
+.contact__info-link:hover .contact__icon-email--open,
+.contact__info-link:hover .contact__icon-phone--active,
+.contact__info-link:hover .contact__icon-location--active {
+  opacity: 1;
+  transform: scale(1.12) rotate(0deg);
 }
 
 .contact__info-link:hover .contact__info-text {
@@ -158,4 +196,24 @@
   .contact__form-container {
     padding: 1.75rem 1.5rem;
   }
+}
+
+.footer__appreciation {
+  font-family: var(--font-serif) !important;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.footer__name {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.footer__copyright {
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
 }

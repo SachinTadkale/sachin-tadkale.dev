@@ -1,33 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faReact,
-  faNode,
-  faPython,
-  faAws,
-  faDocker,
-  faLinux,
-} from "@fortawesome/free-brands-svg-icons";
-import {
-  faCodeBranch,
-  faBrain,
-  faPenNib,
-  faSliders,
-  faCode,
-  faRocket,
-  faServer,
-} from "@fortawesome/free-solid-svg-icons";
-import type { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import {
-  LangChainIcon,
-  NextJsIcon,
-  OpenAIIcon,
-  PostgresIcon,
-  RagIcon,
-  RedisIcon,
-  TypeScriptIcon,
-  VectorDbIcon,
-  VercelIcon,
-} from "./techSvgs";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 type TechIconProps = {
   name: string;
@@ -35,50 +7,46 @@ type TechIconProps = {
   className?: string;
 };
 
-const faMap: Record<string, IconDefinition> = {
-  React: faReact,
-  "Node.js": faNode,
-  Python: faPython,
-  AWS: faAws,
-  Docker: faDocker,
-  Linux: faLinux,
-  "CI/CD": faCodeBranch,
-  "Prompt engineering": faPenNib,
-  "Fine-tuning": faSliders,
+const nameMap: Record<string, string> = {
+  "Next.js": "nextjs",
+  "Node.js": "nodejs",
+  "Spring Boot": "springboot",
+  "OpenAI API": "openai",
+  "RAG pipelines": "rag",
+  Pinecone: "pinecone",
+  "Hugging Face": "hugging-face",
+  "CI/CD": "devops",
+  Linux: "linux",
 };
 
-const svgMap: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  "Next.js": NextJsIcon,
-  TypeScript: TypeScriptIcon,
-  Vercel: VercelIcon,
-  "OpenAI API": OpenAIIcon,
-  LangChain: LangChainIcon,
-  Redis: RedisIcon,
-  PostgreSQL: PostgresIcon,
-  "RAG pipelines": RagIcon,
-  "Vector DBs": VectorDbIcon,
-};
+export function TechIcon({ name, size = 20, className }: TechIconProps) {
+  const slug =
+    nameMap[name] ||
+    name
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, "-")
+      .replace(/-+/g, "-");
 
-export function TechIcon({ name, size = 18, className }: TechIconProps) {
-  const fa = faMap[name];
-  if (fa) {
-    return <FontAwesomeIcon icon={fa} style={{ width: size, height: size }} className={className} />;
-  }
-
-  const Svg = svgMap[name];
-  if (Svg) {
-    return <Svg size={size} className={className} />;
-  }
-
-  return <FontAwesomeIcon icon={faCode} style={{ width: size, height: size }} className={className} />;
-}
-
-export function GroupIcon({ type, size = 20, className }: { type: string; size?: number; className?: string }) {
-  const icons: Record<string, IconDefinition> = {
-    ship: faRocket,
-    scale: faServer,
-    ai: faBrain,
-  };
-  const icon = icons[type] ?? faCode;
-  return <FontAwesomeIcon icon={icon} style={{ width: size, height: size }} className={className} />;
+  return (
+    <div
+      className={cn(
+        "tech-icon-container select-none pointer-events-none",
+        className,
+      )}
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+      }}
+    >
+      <Image
+        src={`/tech-stack/${slug}.webp`}
+        alt={`${name} icon`}
+        width={size}
+        height={size}
+        className="object-contain w-full h-full select-none pointer-events-none"
+        draggable={false}
+        onContextMenu={(e) => e.preventDefault()}
+      />
+    </div>
+  );
 }
