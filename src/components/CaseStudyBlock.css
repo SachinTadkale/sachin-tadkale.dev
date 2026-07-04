@@ -1,0 +1,119 @@
+.case-study__image-link {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.case-study__image-wrap {
+  overflow: hidden;
+  border-radius: 0 !important; /* Strict zero border-radius */
+  border: 0.0625rem solid var(--color-border);
+  position: relative;
+  transition: border-color var(--transition-fast);
+}
+
+/* Spotlight radial tint follows cursor */
+.case-study__image-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    rgba(28, 43, 74, 0.08),
+    transparent 70%
+  );
+  opacity: var(--spotlight-active, 0);
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 400ms ease;
+}
+
+.case-study__image-wrap:hover {
+  border-color: color-mix(in srgb, var(--color-border) 70%, var(--color-text-muted));
+}
+
+/* Image zoom on hover */
+.case-study__image {
+  transition: transform var(--transition-premium);
+}
+
+.case-study__image-wrap:hover .case-study__image {
+  transform: scale(1.04);
+}
+
+/* Image overlay text */
+.case-study__image-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(28, 43, 74, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  z-index: 3;
+  transition: opacity var(--transition-premium);
+}
+
+.case-study__image-wrap:hover .case-study__image-overlay {
+  opacity: 1;
+}
+
+.case-study__overlay-text {
+  color: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--color-white);
+  padding: 0.625rem 1.25rem;
+  border-radius: 0; /* Strict zero border-radius */
+  transition: transform var(--transition-premium);
+  transform: translateY(10px);
+}
+
+.case-study__image-wrap:hover .case-study__overlay-text {
+  transform: translateY(0);
+}
+
+.case-study__description {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: var(--leading-body);
+  color: var(--color-text-secondary);
+  max-width: 480px;
+}
+
+@media (min-width: 1024px) {
+  .case-study__description {
+    font-size: 1rem;
+  }
+}
+
+/* Primary CTA Link Styling */
+.case-study__cta {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 0.625rem 1.25rem;
+  width: fit-content;
+  text-decoration: none;
+  border-radius: 0;
+  box-shadow: 0px 0px 0px transparent;
+  transition: 
+    background-color var(--transition-fast), 
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.case-study__cta:hover {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--color-accent);
+}

@@ -1,0 +1,101 @@
+.tech-stack {
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Left sidebar tabs */
+.tech-stack__tab-btn {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: 
+    border-color var(--transition-fast), 
+    background-color var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-radius: 0 !important;
+}
+
+.tech-stack__tab-btn:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.tech-stack__tab-btn--active {
+  border-left-color: var(--color-accent);
+  background-color: var(--color-bg-secondary);
+}
+
+.tech-stack__tab-label {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.tech-stack__tab-desc {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Right side grid */
+.tech-stack__grid-container {
+  width: 100%;
+}
+
+.tech-stack__grid-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.125rem 1.25rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  border-radius: 0 !important; /* Strict zero border-radius */
+  transition: 
+    background-color var(--transition-fast), 
+    border-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.tech-stack__grid-item:hover {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--color-accent);
+}
+
+.tech-stack__grid-icon {
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.tech-stack__grid-item:hover .tech-stack__grid-icon {
+  transform: scale(1.12);
+}
+
+.tech-stack__grid-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tech-stack__grid-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .tech-stack__grid-item:hover .tech-stack__grid-icon {
+    transform: none;
+  }
+}

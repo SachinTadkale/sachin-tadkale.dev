@@ -1,0 +1,51 @@
+.how-i-think {
+  background-color: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.how-i-think__card {
+  padding: 2rem;
+  border-radius: 0 !important; /* Strict zero border-radius */
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-primary);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.how-i-think__card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--color-accent);
+}
+
+.how-i-think__card-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0 !important; /* Strict zero border-radius */
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  color: var(--color-accent);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.how-i-think__card:hover .how-i-think__card-icon-wrap {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .how-i-think__card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}

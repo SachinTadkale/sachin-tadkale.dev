@@ -1,0 +1,100 @@
+.nav-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition:
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    backdrop-filter var(--transition-base);
+}
+
+.nav-header--transparent {
+  background-color: transparent;
+}
+
+.nav-header--scrolled {
+  background-color: color-mix(in srgb, var(--color-bg-primary) 90%, transparent);
+  border-bottom: 0.0625rem solid var(--color-border);
+  backdrop-filter: blur(0.75rem);
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  border-radius: var(--radius-default);
+  transition: color var(--transition-fast);
+}
+
+.nav-logo:hover {
+  color: var(--color-accent);
+}
+
+.nav-link {
+  font-size: 0.9375rem;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-xs);
+  transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--color-accent);
+}
+
+.nav-resume-btn {
+  border-radius: 0 !important;
+  border: 0.0625rem solid var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  background-color: transparent;
+  transition: 
+    background-color var(--transition-fast), 
+    border-color var(--transition-fast), 
+    color var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.nav-resume-btn:hover {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--color-accent);
+}
+
+.nav-menu-btn {
+  border-radius: 0;
+  border: 0.0625rem solid var(--color-border);
+  color: var(--color-text-primary);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.nav-menu-btn:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.nav-mobile-panel {
+  border-bottom: 0.0625rem solid var(--color-border);
+  background-color: var(--color-bg-primary);
+}
+
+.nav-mobile-link {
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  transition: color var(--transition-fast);
+}
+
+.nav-mobile-link:hover {
+  color: var(--color-accent);
+}
+
+

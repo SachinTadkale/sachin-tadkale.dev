@@ -1,0 +1,84 @@
+.hero {
+  background-color: var(--color-bg-primary);
+}
+
+/* ─── Hero Image Container with Rotating Border ─── */
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 24rem;
+  aspect-ratio: 1;
+  background-color: var(--color-bg-secondary);
+  border: 0.0625rem solid transparent;
+  border-image: linear-gradient(
+      to bottom right,
+      #cf9366 0%,
+      rgba(207, 147, 102, 0.15) 100%
+    )
+    1;
+}
+
+.border-loader-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.border-loader-rect {
+  animation: border-rotate 4s linear infinite;
+  stroke-dasharray: 98 294; /* 98 is length of one side, 294 is total gap length of the other 3 sides */
+  stroke: var(--color-accent);
+}
+
+@keyframes border-rotate {
+  from {
+    stroke-dashoffset: 392; /* 4 sides * 98 = 392 total perimeter path length */
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Minimalist Image Placeholder */
+.hero-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-secondary);
+  padding: 1.5rem;
+}
+
+.hero-image-placeholder__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-image-placeholder__icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--color-text-muted);
+  opacity: 0.35;
+  margin-bottom: 1rem;
+}
+
+.hero-image-placeholder__label {
+  font-family: var(--font-sans);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.8;
+}
+
+/* Reduced motion disables the loop animation */
+@media (prefers-reduced-motion: reduce) {
+  .border-loader-rect {
+    animation: none;
+    stroke-dasharray: none;
+  }
+}

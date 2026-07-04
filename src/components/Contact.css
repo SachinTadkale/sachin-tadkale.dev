@@ -1,0 +1,161 @@
+.contact {
+  background-color: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Grid layout for 3 equal height and width boxes, no margin */
+.contact__info-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.contact__info-link {
+  text-decoration: none;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 0 !important;
+  position: relative;
+  transition: 
+    background-color var(--transition-fast),
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+  z-index: 1;
+}
+
+.contact__info-icon {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-accent);
+  font-size: 1.125rem;
+  transition: transform var(--transition-fast), color var(--transition-fast);
+}
+
+.contact__info-text {
+  font-family: var(--font-sans);
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  transition: color var(--transition-fast);
+}
+
+/* Hover States: scale slightly and add background color */
+.contact__info-link:hover {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  z-index: 10;
+  box-shadow: 4px 4px 0px var(--color-accent);
+}
+
+.contact__info-link:hover .contact__info-icon {
+  color: var(--color-accent);
+  transform: scale(1.12);
+}
+
+.contact__info-link:hover .contact__info-text {
+  color: var(--color-text-primary);
+}
+
+/* Form Container & Floating Label Groups */
+.contact__form-container {
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.015);
+}
+
+.contact__group {
+  position: relative;
+  width: 100%;
+}
+
+/* Modern Input styling (No Border Radius, custom hover/focus transition) */
+.contact__input {
+  width: 100%;
+  border-radius: 0 !important; /* Strictly no border radius */
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  color: var(--color-text-primary);
+  transition: 
+    border-color var(--transition-premium),
+    background-color var(--transition-premium),
+    box-shadow var(--transition-premium);
+  outline: none;
+}
+
+.contact__input:hover {
+  border-color: var(--color-text-muted);
+}
+
+.contact__input:focus {
+  border-color: var(--color-accent);
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+
+.contact__textarea {
+  resize: none;
+  min-height: 8.75rem;
+}
+
+/* Floating Label Animation */
+.contact__label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: 
+    transform var(--transition-premium),
+    font-size var(--transition-premium),
+    color var(--transition-premium),
+    background-color var(--transition-premium),
+    padding var(--transition-premium);
+  transform-origin: left top;
+}
+
+/* Shift label when input is focused or has content */
+.contact__input:focus ~ .contact__label,
+.contact__input:not(:placeholder-shown) ~ .contact__label {
+  transform: translateY(-1.6rem) scale(0.8);
+  color: var(--color-accent);
+  font-weight: 600;
+  background-color: var(--color-bg-primary);
+  padding: 0 0.25rem;
+  left: 0.75rem;
+}
+
+.contact__status--success {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+.contact__status--error {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-error);
+}
+
+/* Mobile responsive padding overrides */
+@media (max-width: 1023px) {
+  .contact__form-container {
+    padding: 1.75rem 1.5rem;
+  }
+}

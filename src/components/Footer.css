@@ -1,0 +1,26 @@
+.footer {
+  border-top: 0.0625rem solid var(--color-border);
+  background-color: var(--color-bg-primary);
+}
+
+.footer__name {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.footer__copyright {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}
+
+.footer__nav-link {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.footer__nav-link:hover {
+  color: var(--color-accent);
+}
