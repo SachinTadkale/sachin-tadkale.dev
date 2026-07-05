@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: PageParams }) {
     };
   }
 
-  const url = `${siteConfig.resumeUrl.replace("/resume.pdf", "")}/work/${study.id}`;
+  const url = `${siteConfig.url}/work/${study.id}`;
 
   return {
     title: study.details.metaTitle,
@@ -96,11 +96,11 @@ export default async function CaseStudyPage({
     "@graph": [
       {
         "@type": "TechArticle",
-        "@id": `${siteConfig.resumeUrl.replace("/resume.pdf", "")}/work/${study.id}#article`,
+        "@id": `${siteConfig.url}/work/${study.id}#article`,
         isPartOf: {
           "@type": "WebPage",
-          "@id": `${siteConfig.resumeUrl.replace("/resume.pdf", "")}/work/${study.id}`,
-          url: `${siteConfig.resumeUrl.replace("/resume.pdf", "")}/work/${study.id}`,
+          "@id": `${siteConfig.url}/work/${study.id}`,
+          url: `${siteConfig.url}/work/${study.id}`,
           name: study.details.metaTitle,
         },
         headline: study.details.metaTitle,
@@ -110,13 +110,13 @@ export default async function CaseStudyPage({
           "@type": "Person",
           name: siteConfig.name,
           jobTitle: "AI Engineer & Software Developer",
-          url: siteConfig.resumeUrl.replace("/resume.pdf", ""),
+          url: siteConfig.url,
         },
         publisher: {
           "@type": "Person",
           name: siteConfig.name,
         },
-        mainEntityOfPage: `${siteConfig.resumeUrl.replace("/resume.pdf", "")}/work/${study.id}`,
+        mainEntityOfPage: `${siteConfig.url}/work/${study.id}`,
       },
       {
         "@type": "SoftwareApplication",

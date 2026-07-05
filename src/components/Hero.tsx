@@ -8,6 +8,7 @@ import { siteConfig } from "@/lib/content";
 import { Button } from "@/components/ui/Button";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import Image from "next/image";
 import "./Hero.css";
 
 export function Hero() {
@@ -21,7 +22,7 @@ export function Hero() {
     <section className="hero section-padding pt-32 lg:pt-40">
       <div className="container-content">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
-          <div className="w-full lg:max-w-[55%]">
+          <div className="w-full lg:max-w-[50%]">
             <motion.div
               initial={reducedMotion ? false : "hidden"}
               animate="visible"
@@ -89,29 +90,18 @@ export function Hero() {
               delay: 0.45,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="w-full lg:max-w-[40%] flex justify-center lg:justify-end"
+            className="w-full lg:max-w-[45%] flex justify-center lg:justify-end"
           >
             <div className="hero-image-container">
-              {/* Minimalist image placeholder */}
-              <div className="hero-image-placeholder">
-                <div className="hero-image-placeholder__content">
-                  <svg
-                    className="hero-image-placeholder__icon"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                  <span className="hero-image-placeholder__label">
-                    sachin_tadkale.jpeg
-                  </span>
-                </div>
+              <div className="relative w-full h-full overflow-hidden">
+                <Image
+                  src="/images/sachin.webp"
+                  alt="Sachin Tadkale"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover hero-image"
+                  priority
+                />
               </div>
             </div>
           </motion.div>

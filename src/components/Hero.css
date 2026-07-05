@@ -24,16 +24,10 @@
 .hero-image-container {
   position: relative;
   width: 100%;
-  max-width: 24rem;
+  max-width: 28rem;
   aspect-ratio: 1;
   background-color: var(--color-bg-secondary);
-  border: 0.0625rem solid transparent;
-  border-image: linear-gradient(
-      to bottom right,
-      #cf9366 0%,
-      rgba(207, 147, 102, 0.15) 100%
-    )
-    1;
+  border: 1px solid var(--color-accent);
 }
 
 .border-loader-svg {
@@ -117,4 +111,8 @@
   .hero__btn-group > * {
     width: 100%;
   }
+}
+
+.hero-image {
+  filter: saturate(0.7) contrast(1.03) brightness(0.97) sepia(0.05);
 }

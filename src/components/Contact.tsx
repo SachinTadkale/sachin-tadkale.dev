@@ -236,7 +236,7 @@ export function Contact() {
       </div>
 
       {/* Integrated Closing Footer */}
-      <div className="container-content w-full mt-auto pt-6 pb-6 lg:pt-8 lg:pb-8">
+      <footer className="container-content w-full mt-auto pt-6 pb-6 lg:pt-8 lg:pb-8">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <span className="footer__appreciation text-secondary block mb-1 italic font-semibold text-xl">
@@ -251,7 +251,7 @@ export function Contact() {
 
           <SocialLinks />
         </div>
-      </div>
+      </footer>
     </section>
   );
 }

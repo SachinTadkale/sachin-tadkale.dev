@@ -1,5 +1,5 @@
 export const aboutContent = {
-  main: `I'm a software engineer who enjoys building full-stack applications that solve real problems and make everyday work a little easier. I especially enjoy automating repetitive tasks and turning ideas into products people can rely on. My long-term goal is simple: build software that people genuinely find useful, contribute to open source, and create products that make a positive impact.`,
+  main: `I am Sachin Tadkale, a software engineer who enjoys building full-stack applications that solve real problems and make everyday work a little easier. I especially enjoy automating repetitive tasks and turning ideas into products people can rely on. My long-term goal is simple: build software that people genuinely find useful, contribute to open source, and create products that make a positive impact.`,
   supporting: `Recently, I've been focused on AI engineering and building domain-specific AI assistants that help people with real tasks—not just general conversations. I'm fascinated by how AI is changing the way we work, learn, and solve problems, and I enjoy exploring technologies like tool calling, RAG, LangChain, and agentic systems to build practical, intelligent software.`,
 };
 

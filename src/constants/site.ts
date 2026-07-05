@@ -12,6 +12,7 @@ export const siteConfig = {
     twitter: "https://x.com/_SachinTadkale_",
   },
   resumeUrl: "/resume.pdf",
+  url: "https://sachin-tadkale.dev",
 };
 
 export const navLinks = [

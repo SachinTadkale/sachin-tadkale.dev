@@ -22,16 +22,16 @@
   --font-serif: var(--font-newsreader), Georgia, serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
 
-  --text-hero-mobile: 2rem;
-  --text-hero-desktop: 2.5rem;
-  --text-section-mobile: 2rem;
-  --text-section-desktop: 2.5rem;
-  --text-subsection-mobile: 1.25rem;
+  --text-hero-desktop: 2.3rem;
+  --text-section-desktop: 2.3rem;
   --text-subsection-desktop: 1.5rem;
-  --text-card-mobile: 1.25rem;
   --text-card-desktop: 1.75rem;
-  --text-body-lg-mobile: 0.965rem;
   --text-body-lg-desktop: 0.965rem;
+  --text-hero-mobile: 2rem;
+  --text-section-mobile: 2rem;
+  --text-subsection-mobile: 1.25rem;
+  --text-card-mobile: 1.25rem;
+  --text-body-lg-mobile: 0.965rem;
   --text-body: 0.965rem;
   --text-body-sm: 0.965rem;
   --text-caption: 0.8125rem;
