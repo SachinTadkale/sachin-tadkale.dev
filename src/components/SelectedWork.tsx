@@ -21,9 +21,11 @@ export function SelectedWork() {
   };
 
   return (
-    <section id="work" className="selected-work lg:h-screen lg:min-h-[750px] flex flex-col justify-center py-16 lg:py-0">
+    <section
+      id="work"
+      className="selected-work lg:h-screen lg:min-h-[750px] flex flex-col justify-center py-16 lg:py-0"
+    >
       <div className="container-wide w-full">
-        
         {/* Header Section: Flex layout with title on left, quote/note on right */}
         <motion.div
           variants={fadeUp}
@@ -34,20 +36,20 @@ export function SelectedWork() {
         >
           <div>
             <SectionLabel>Selected Work</SectionLabel>
-            <h2 className="heading-section mt-2">Projects that show how I build</h2>
-          </div>
-          <div className="selected-work__note">
-            <span className="selected-work__note-marker" />
-            <p className="selected-work__note-text">
-              Focused on the real-world problem, key decisions, and concrete outcomes.
-            </p>
+            <h2 className="heading-section mt-2">
+              Projects that show how I build
+            </h2>
           </div>
         </motion.div>
 
         {/* Tab Navigation and Panel: Structured to stick directly to the header */}
         <div className="container-content">
           <div className="selected-work__tabs-container">
-            <div className="selected-work__tabs" role="tablist" aria-label="Project case studies">
+            <div
+              className="selected-work__tabs"
+              role="tablist"
+              aria-label="Project case studies"
+            >
               {caseStudies.map((study, idx) => {
                 const isActive = idx === activeIndex;
                 return (
@@ -66,10 +68,16 @@ export function SelectedWork() {
                       <motion.div
                         layoutId="activeProjectIndicator"
                         className="selected-work__tab-indicator"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 380,
+                          damping: 30,
+                        }}
                       />
                     )}
-                    <span className="selected-work__tab-name">{study.name}</span>
+                    <span className="selected-work__tab-name">
+                      {study.name}
+                    </span>
                   </button>
                 );
               })}
@@ -94,7 +102,6 @@ export function SelectedWork() {
             </AnimatePresence>
           </div>
         </div>
-
       </div>
     </section>
   );

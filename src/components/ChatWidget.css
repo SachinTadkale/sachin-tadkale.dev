@@ -1,0 +1,375 @@
+/* Chat Widget CSS Stylesheet */
+
+/* Floating Toggle Button */
+.chat-toggle-btn {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border: none;
+  box-shadow: 0 0.25rem 1rem rgba(28, 43, 74, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform var(--transition-premium), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+
+.chat-toggle-btn:hover {
+  background-color: var(--color-accent-hover);
+  transform: scale(1.08) translateY(-0.0625rem);
+  box-shadow: 0 0.5rem 1.5rem rgba(28, 43, 74, 0.3);
+}
+
+.chat-toggle-btn:focus-visible {
+  outline: 0.125rem solid var(--color-accent);
+  outline-offset: 0.125rem;
+}
+
+/* Icon rotation and transition */
+.chat-toggle-icon-wrapper {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-premium);
+}
+
+.chat-toggle-icon-wrapper.active {
+  transform: rotate(90deg);
+}
+
+.icon-diamond, .icon-close {
+  position: absolute;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.chat-toggle-icon-wrapper:not(.active) .icon-diamond {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+.chat-toggle-icon-wrapper:not(.active) .icon-close {
+  opacity: 0;
+  transform: scale(0.5) rotate(-90deg);
+}
+
+.chat-toggle-icon-wrapper.active .icon-diamond {
+  opacity: 0;
+  transform: scale(0.5) rotate(90deg);
+}
+
+.chat-toggle-icon-wrapper.active .icon-close {
+  opacity: 1;
+  transform: scale(1) rotate(0);
+}
+
+/* Chat Widget Container */
+.chat-widget-container {
+  position: fixed;
+  z-index: 999;
+  background-color: var(--color-bg-primary);
+  border: 0.0625rem solid var(--color-border);
+  box-shadow: 0 0.75rem 2.5rem rgba(28, 43, 74, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: opacity var(--transition-premium), transform var(--transition-premium), visibility var(--transition-premium);
+  will-change: transform, opacity;
+}
+
+/* Mobile First: Full screen sheet */
+@media (max-width: 767px) {
+  .chat-widget-container {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    border-radius: 0;
+    border: none;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+/* Desktop: Floating Window */
+@media (min-width: 768px) {
+  .chat-widget-container {
+    right: 1.25rem;
+    bottom: 4.75rem;
+    width: 24rem;
+    height: 38rem;
+    border-radius: 0;
+  }
+}
+
+/* Open / Close States for Container */
+.chat-widget-container.hidden-state {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .chat-widget-container.hidden-state {
+    transform: translateY(100%);
+  }
+  .chat-widget-container.open-state {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 768px) {
+  .chat-widget-container.hidden-state {
+    transform: translateY(1.5rem) scale(0.95);
+  }
+  .chat-widget-container.open-state {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header */
+.chat-header {
+  background-color: var(--color-accent-soft);
+  border-bottom: 0.0625rem solid var(--color-border);
+  color: var(--color-accent);
+}
+
+.chat-title {
+  font-family: var(--font-sans);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Close & Action Buttons */
+.chat-close-btn, .chat-clear-btn {
+  color: var(--color-text-secondary);
+  border-radius: 0;
+  transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.chat-close-btn:hover, .chat-clear-btn:hover {
+  color: var(--color-accent);
+  background-color: rgba(28, 43, 74, 0.06);
+}
+
+/* Message Scroll Area */
+.chat-messages-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+  background-color: var(--color-bg-primary);
+}
+
+.chat-messages-container::-webkit-scrollbar {
+  width: 0.375rem;
+}
+
+.chat-messages-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.chat-messages-container::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 0;
+}
+
+/* Message Bubbles */
+.chat-bubble {
+  line-height: var(--leading-body);
+  font-size: var(--text-body-sm);
+  transition: transform var(--transition-fast);
+}
+
+.chat-bubble-user {
+  max-width: 85%;
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent);
+  border-radius: 0;
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+.chat-bubble-assistant {
+  background-color: transparent;
+  color: var(--color-text-primary);
+  border-radius: 0;
+  border: none;
+  margin-right: auto;
+  max-width: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+/* Typing Indicator Dots */
+.typing-dots span {
+  width: 0.375rem;
+  height: 0.375rem;
+  background-color: var(--color-text-secondary);
+  border-radius: 50%;
+  display: inline-block;
+  animation: typing-bounce 1.4s infinite both;
+}
+
+.typing-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing-bounce {
+  0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+  40% { transform: scale(1); opacity: 1; }
+}
+
+/* Input Area */
+.chat-input-wrapper {
+  background-color: var(--color-bg-tertiary);
+  border-top: 0.0625rem solid var(--color-border);
+}
+
+.chat-input-field {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0;
+  font-size: var(--text-body-sm);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.chat-input-field:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 0.125rem var(--color-accent-soft);
+}
+
+/* Send & Pause Buttons */
+.chat-send-btn {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border-radius: 0;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.chat-send-btn:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+  transform: translateY(-0.0625rem);
+}
+
+.chat-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chat-stop-btn {
+  background-color: var(--color-error);
+  color: var(--color-white);
+  border-radius: 0;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.chat-stop-btn:hover {
+  background-color: #991b1b;
+  transform: translateY(-0.0625rem);
+}
+
+/* Markdown Rendering Styles */
+.markdown-text {
+  width: 100%;
+}
+
+.code-block-container {
+  overflow: hidden;
+  margin: 0.75rem 0;
+  border: 0.0625rem solid var(--color-border);
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm, 0.5rem);
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.6875rem;
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-tertiary);
+  border-bottom: 0.0625rem solid var(--color-border);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.code-block-container pre {
+  margin: 0;
+  padding: 0.875rem;
+  overflow-x: auto;
+  background-color: transparent;
+}
+
+.code-block-container code {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+  white-space: pre;
+}
+
+.chat-bubble-assistant code {
+  font-family: var(--font-mono, monospace);
+}
+
+/* Inline code formatting to match theme */
+.chat-bubble-assistant code.inline-code {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-accent);
+  padding: 0.125rem 0.25rem;
+  border-radius: var(--radius-xs, 0.25rem);
+  font-size: 0.8em;
+  border: 0.0625rem solid var(--color-border);
+}
+
+.chat-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.chat-link:hover {
+  color: var(--color-accent-hover);
+}
+
+/* Diamond Spinning Animation */
+@keyframes spin-diamond {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinning-diamond {
+  animation: spin-diamond 1.5s linear infinite;
+  transform-origin: center;
+}
+
+
+
+

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Newsreader } from "next/font/google";
 import { LenisProvider } from "@/components/LenisProvider";
+import ChatWidget from "@/components/ChatWidget";
 import { siteConfig } from "@/lib/content";
 import "@/lib/fontawesome";
 import "./globals.css";
@@ -153,7 +154,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-        <LenisProvider>{children}</LenisProvider>
+        <LenisProvider>
+          {children}
+          <ChatWidget />
+        </LenisProvider>
       </body>
     </html>
   );
