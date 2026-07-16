@@ -24,16 +24,35 @@
   backdrop-filter: blur(0.75rem);
 }
 
-.nav-logo {
+.nav-logo-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--radius-default);
+}
+
+.nav-logo-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: contain;
+  transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-logo-container:hover .nav-logo-icon {
+  transform: rotateY(360deg);
+}
+
+.nav-logo-text {
   font-family: var(--font-serif);
   font-size: 1.125rem;
   font-weight: 500;
   color: var(--color-text-primary);
-  border-radius: var(--radius-default);
   transition: color var(--transition-fast);
 }
 
-.nav-logo:hover {
+.nav-logo-container:hover .nav-logo-text {
   color: var(--color-accent);
 }
 

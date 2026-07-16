@@ -15,10 +15,7 @@ import "./Hero.css";
 export function Hero() {
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const reducedMotion = useReducedMotion();
-  const headlineLines = [
-    "Engineering reliable software today.",
-    "Building intelligent systems for tomorrow.",
-  ];
+  const headlineLines = ["Building modern software.", "Powered by AI."];
 
   return (
     <section className="hero section-padding pt-32 lg:pt-40">
@@ -31,7 +28,7 @@ export function Hero() {
               variants={heroLineStagger}
             >
               <motion.div variants={heroLine}>
-                <SectionLabel>FULL-STACK SOFTWARE ENGINEER</SectionLabel>
+                <SectionLabel>FULL-STACK DEVELOPER</SectionLabel>
               </motion.div>
 
               <h1 className="heading-hero">

@@ -92,7 +92,7 @@ export const metadata: Metadata = {
         url: "/images/case-study-portfolio.svg",
         width: 1200,
         height: 630,
-        alt: `${siteConfig.name} - AI Engineer & Software Developer Portfolio`,
+        alt: `${siteConfig.name} - Full Stack Developer`,
       },
     ],
   },
@@ -149,10 +149,7 @@ export default function RootLayout({
       className={`${inter.variable} ${newsreader.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <body
-        className="font-sans antialiased"
-        suppressHydrationWarning
-      >
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}

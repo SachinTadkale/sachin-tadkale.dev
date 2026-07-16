@@ -69,7 +69,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "I built Vyaro, an agricultural marketplace ecosystem comprising a responsive web app, an Android application, and a marketing website. The platform allows farmers to showcase and sell produce directly to buyers, bypassing traditional middlemen.",
     tags: ["React", "Node", "PostgreSQL", "Flutter", "REST APIs"],
-    image: "/images/case-study-api.svg",
+    image: "/project-images/vyaro_web_overview_page.webp",
     imageAlt: "Vyaro agricultural marketplace interface mockup",
     imagePosition: "right",
     platforms: [
@@ -173,16 +173,16 @@ export const caseStudies: CaseStudy[] = [
       ],
       gallery: [
         {
-          src: "/images/case-study-api.svg",
-          caption: "Marketplace seller portal listing dashboard.",
+          src: "/project-images/vyaro_web_overview_page.webp",
+          caption: "Vyaro marketplace web overview page.",
         },
         {
-          src: "/images/case-study-portfolio.svg",
-          caption: "Static product marketing portal landing screen.",
+          src: "/project-images/vyaro_web_profile_page.webp",
+          caption: "Vyaro marketplace web profile page.",
         },
         {
-          src: "/images/case-study-ai-assistant.svg",
-          caption: "Android seller client database sync configuration.",
+          src: "/project-images/vyaro_web_public_page.webp",
+          caption: "Vyaro marketplace web public page.",
         },
       ],
     },
@@ -196,7 +196,7 @@ export const caseStudies: CaseStudy[] = [
     description:
       "I am developing Sara AI, a personal assistant aimed at automating specific daily workflows. Rather than functioning as a general chat platform, it uses structured tool-calling pipelines to connect directly with external productivity APIs.",
     tags: ["FastAPI", "Python", "OpenAI", "Tool Calling", "API Integration"],
-    image: "/images/case-study-ai-assistant.svg",
+    image: "/project-images/SaraAI_1.webp",
     imageAlt: "Sara AI assistant workflow execution interface",
     imagePosition: "left",
     platforms: [
@@ -285,20 +285,21 @@ export const caseStudies: CaseStudy[] = [
       ],
       gallery: [
         {
-          src: "/images/case-study-ai-assistant.svg",
-          caption: "Sara AI query response timeline log.",
+          src: "/project-images/SaraAI_1.webp",
+          caption: "Sara AI assistant workflow execution interface.",
         },
         {
-          src: "/images/case-study-api.svg",
-          caption: "Asynchronous webhook connection monitor.",
+          src: "/project-images/SaraAI_2.webp",
+          caption: "Sara AI interactive query handler.",
         },
         {
-          src: "/images/case-study-portfolio.svg",
-          caption: "Structured output validation logs.",
+          src: "/project-images/SaraAI_3.webp",
+          caption: "Sara AI dashboard configuration panel.",
         },
       ],
     },
   },
+  /*
   {
     id: "worklyn",
     name: "Worklyn",
@@ -422,4 +423,5 @@ export const caseStudies: CaseStudy[] = [
       ],
     },
   },
+  */
 ];

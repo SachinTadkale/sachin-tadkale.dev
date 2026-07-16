@@ -52,7 +52,7 @@ export function CaseStudyBlock({ study }: { study: CaseStudy }) {
         </div>
       </div>
 
-      {/* Image Column (Always Right, Fully Clickable with Hover Zoom & Overlay) */}
+      {/* Image Column (Always Right, Fully Clickable with Screen Design) */}
       <Link href={`/work/${study.id}`} className="case-study__image-link lg:order-2">
         <div
           ref={spotlight.ref}
@@ -62,11 +62,11 @@ export function CaseStudyBlock({ study }: { study: CaseStudy }) {
           className="case-study__image-wrap group"
           data-cursor="pointer"
         >
-          {/* Hover text overlay */}
-          <div className="case-study__image-overlay">
-            <span className="case-study__overlay-text">Explore Project Details</span>
+          <div className="case-study__screen-header">
+            <span className="case-study__screen-dot bg-[#ff5f56]" />
+            <span className="case-study__screen-dot bg-[#ffbd2e]" />
+            <span className="case-study__screen-dot bg-[#27c93f]" />
           </div>
-
           <div className="overflow-hidden">
             <Image
               src={study.image}

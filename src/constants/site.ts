@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Sachin Tadkale",
-  title: "Sachin Tadkale — AI Engineer & Software Developer",
+  title: "Sachin Tadkale — Full Stack Developer",
   description:
     "I build reliable, scalable software and AI-powered products — from idea to production.",
   email: "sachintadkale22@outlook.com",

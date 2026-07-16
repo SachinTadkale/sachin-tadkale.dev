@@ -43,8 +43,13 @@ export function Nav() {
           className="container-content flex h-16 items-center justify-between lg:h-[4.5rem]"
           aria-label="Main navigation"
         >
-          <a href="#" className="nav-logo link-underline focus-ring">
-            {siteConfig.name}
+          <a href="#" className="nav-logo-container focus-ring">
+            <img
+              src="/images/icon-dark.webp"
+              alt="Sachin Tadkale"
+              className="nav-logo-icon"
+            />
+            <span className="nav-logo-text">{siteConfig.name}</span>
           </a>
 
           <ul className="hidden items-center gap-8 md:flex">
@@ -95,7 +100,14 @@ export function Nav() {
           >
             {/* Panel Header */}
             <div className="flex h-16 items-center justify-between px-6 border-b border-border">
-              <span className="nav-logo">{siteConfig.name}</span>
+              <div className="nav-logo-container">
+                <img
+                  src="/images/icon-dark.webp"
+                  alt="Sachin Tadkale"
+                  className="nav-logo-icon"
+                />
+                <span className="nav-logo-text">{siteConfig.name}</span>
+              </div>
               <button
                 type="button"
                 className="nav-menu-btn flex h-10 w-10 items-center justify-center focus-ring"

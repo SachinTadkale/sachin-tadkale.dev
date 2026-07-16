@@ -295,16 +295,6 @@ export default async function CaseStudyPage({
           <section id="architecture" className="space-y-6">
             <h2 className="case-study-details__section-label">Architecture</h2>
 
-            {study.details.architecture.diagramSvg &&
-              study.details.architecture.diagramSvg.trim() !== "" && (
-                <div
-                  className="case-study-details__svg-wrapper"
-                  dangerouslySetInnerHTML={{
-                    __html: study.details.architecture.diagramSvg,
-                  }}
-                />
-              )}
-
             <div className="space-y-4">
               <div>
                 <h4 className="case-study-details__sub-label">
