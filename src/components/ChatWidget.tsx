@@ -2,14 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { 
-  faDiamond, 
-  faXmark, 
-  faPaperPlane, 
-  faStop, 
-  faTrash, 
-  faRobot, 
-  faUser 
+import {
+  faDiamond,
+  faXmark,
+  faPaperPlane,
+  faStop,
+  faTrash,
+  faRobot,
+  faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import "./ChatWidget.css";
 import ReactMarkdown from "react-markdown";
@@ -35,7 +35,7 @@ function parseMarkdown(content: string) {
             const match = /language-(\w+)/.exec(className || "");
             const language = match ? match[1] : "";
             const isInline = !match;
-            
+
             if (isInline) {
               return (
                 <code className="inline-code" {...props}>
@@ -60,27 +60,46 @@ function parseMarkdown(content: string) {
             );
           },
           p({ children }) {
-            return <p className="m-0 min-h-[1em] text-sm leading-relaxed my-1">{children}</p>;
+            return (
+              <p className="m-0 min-h-[1em] text-sm leading-relaxed my-1">
+                {children}
+              </p>
+            );
           },
           ul({ children }) {
-            return <ul className="pl-4 my-1 list-disc text-sm leading-relaxed flex flex-col gap-1">{children}</ul>;
+            return (
+              <ul className="pl-4 my-1 list-disc text-sm leading-relaxed flex flex-col gap-1">
+                {children}
+              </ul>
+            );
           },
           ol({ children }) {
-            return <ol className="pl-4 my-1 list-decimal text-sm leading-relaxed flex flex-col gap-1">{children}</ol>;
+            return (
+              <ol className="pl-4 my-1 list-decimal text-sm leading-relaxed flex flex-col gap-1">
+                {children}
+              </ol>
+            );
           },
           li({ children }) {
             return <li className="my-0.5">{children}</li>;
           },
           strong({ children }) {
-            return <strong className="font-semibold text-accent">{children}</strong>;
+            return (
+              <strong className="font-semibold text-accent">{children}</strong>
+            );
           },
           a({ href, children }) {
             return (
-              <a href={href} target="_blank" rel="noopener noreferrer" className="chat-link">
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="chat-link"
+              >
                 {children}
               </a>
             );
-          }
+          },
         }}
       >
         {normalizedContent}
@@ -95,13 +114,14 @@ export default function ChatWidget() {
   const [messages, setMessages] = useState<Message[]>([
     {
       role: "assistant",
-      content: "Hi! I'm Sara, Sachin's AI assistant. Ask me anything about Sachin's background, skills, or portfolio!",
+      content:
+        "Hi! I'm Sara, Sachin's AI assistant. Ask me anything about Sachin's background, skills, or portfolio!",
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [displayedResponse, setDisplayedResponse] = useState("");
-  
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
   const typingTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -124,14 +144,15 @@ export default function ChatWidget() {
     setIsTyping(true);
     setDisplayedResponse("");
     fullResponseRef.current = fullText;
-    
+
     const words = fullText.split(" ");
     let currentWordIndex = 0;
     let currentText = "";
 
     const typeNextWord = () => {
       if (currentWordIndex < words.length) {
-        currentText += (currentWordIndex === 0 ? "" : " ") + words[currentWordIndex];
+        currentText +=
+          (currentWordIndex === 0 ? "" : " ") + words[currentWordIndex];
         setDisplayedResponse(currentText);
         currentWordIndex++;
         // Natural speed variation for premium feel
@@ -139,7 +160,10 @@ export default function ChatWidget() {
         typingTimerRef.current = setTimeout(typeNextWord, delay);
       } else {
         // Finished typing
-        setMessages((prev) => [...prev, { role: "assistant", content: fullText }]);
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: fullText },
+        ]);
         setDisplayedResponse("");
         setIsTyping(false);
       }
@@ -166,7 +190,10 @@ export default function ChatWidget() {
     if (isTyping && displayedResponse.trim()) {
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: displayedResponse + " [Response paused by user]" },
+        {
+          role: "assistant",
+          content: displayedResponse + " [Response paused by user]",
+        },
       ]);
     } else if (isLoading) {
       setMessages((prev) => [
@@ -194,14 +221,17 @@ export default function ChatWidget() {
     abortControllerRef.current = controller;
 
     try {
-      const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL || "https://api.sachin-tadkale.dev"}/api/v1/chat`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const data = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL || "https://api.sachin-tadkale.dev"}/api/v1/chat`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ message: userMessage }),
+          signal: controller.signal,
         },
-        body: JSON.stringify({ message: userMessage }),
-        signal: controller.signal,
-      });
+      );
 
       if (!data.ok) throw new Error("Failed to generate response");
 
@@ -217,22 +247,26 @@ export default function ChatWidget() {
       // Simple character-by-character print loop
       const printNextChar = () => {
         if (displayedResponseText.length < accumulatedResponse.length) {
-          displayedResponseText += accumulatedResponse[displayedResponseText.length];
+          displayedResponseText +=
+            accumulatedResponse[displayedResponseText.length];
           setDisplayedResponse(displayedResponseText);
-          
+
           if (isFirstChunk) {
             setIsLoading(false);
             setIsTyping(true);
             isFirstChunk = false;
           }
-          
+
           setTimeout(printNextChar, 10); // Print next character in 10ms
         } else if (!done) {
           // Wait for more data to stream in
           setTimeout(printNextChar, 50);
         } else {
           // Finished streaming and printing
-          setMessages((prev) => [...prev, { role: "assistant", content: accumulatedResponse }]);
+          setMessages((prev) => [
+            ...prev,
+            { role: "assistant", content: accumulatedResponse },
+          ]);
           setDisplayedResponse("");
           setIsTyping(false);
         }
@@ -266,7 +300,10 @@ export default function ChatWidget() {
       setIsLoading(false);
       setMessages((prev) => [
         ...prev,
-        { role: "assistant", content: "Sorry, I encountered an error. Please try again." },
+        {
+          role: "assistant",
+          content: "Sorry, I encountered an error. Please try again.",
+        },
       ]);
     } finally {
       abortControllerRef.current = null;
@@ -279,7 +316,8 @@ export default function ChatWidget() {
     setMessages([
       {
         role: "assistant",
-        content: "Hi! I'm Sara, Sachin's AI assistant. Ask me anything about Sachin's background, skills, or portfolio!",
+        content:
+          "Hi! I'm Sara, Sachin's AI assistant. Ask me anything about Sachin's background, skills, or portfolio!",
       },
     ]);
   };
@@ -287,8 +325,8 @@ export default function ChatWidget() {
   return (
     <>
       {/* Floating Toggle Button */}
-      <button 
-        className="chat-toggle-btn flex items-center justify-center"
+      <button
+        className={`chat-toggle-btn flex items-center justify-center ${isOpen ? "chat-toggle-btn--hidden" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle chat widget"
       >
@@ -299,30 +337,36 @@ export default function ChatWidget() {
       </button>
 
       {/* Chat Widget Window */}
-      <div className={`chat-widget-container ${isOpen ? "open-state" : "hidden-state"}`} data-lenis-prevent>
+      <div
+        className={`chat-widget-container ${isOpen ? "open-state" : "hidden-state"}`}
+        data-lenis-prevent
+      >
         {/* Header */}
         <div className="chat-header flex items-center justify-between px-4 py-3">
           <div className="flex items-center gap-2">
-            <FontAwesomeIcon 
-              icon={faDiamond} 
-              className={`w-3 h-3 text-accent ${(isLoading || isTyping) ? "spinning-diamond" : ""}`} 
+            <FontAwesomeIcon
+              icon={faDiamond}
+              className={`w-3 h-3 text-accent`}
             />
             <div>
               <h3 className="chat-title text-sm m-0">Chat with Sara</h3>
-              <p className="text-xs text-secondary m-0" style={{ fontSize: "0.6875rem" }}>
-                {isLoading ? "Thinking..." : "Portfolio Assistant"}
+              <p
+                className="text-xs text-secondary m-0"
+                style={{ fontSize: "0.6875rem" }}
+              >
+                Portfolio Assistant
               </p>
             </div>
           </div>
           <div className="flex items-center gap-1">
-            <button 
+            <button
               className="chat-clear-btn p-1.5 flex items-center justify-center border-0 bg-transparent cursor-pointer"
               onClick={clearChat}
               title="Clear Chat"
             >
               <FontAwesomeIcon icon={faTrash} className="w-3.5 h-3.5" />
             </button>
-            <button 
+            <button
               className="chat-close-btn p-1.5 flex items-center justify-center border-0 bg-transparent cursor-pointer"
               onClick={() => setIsOpen(false)}
               title="Close Chat"
@@ -333,13 +377,18 @@ export default function ChatWidget() {
         </div>
 
         {/* Message Area */}
-        <div className="chat-messages-container flex-1 p-4 flex flex-col gap-4" data-lenis-prevent>
+        <div
+          className="chat-messages-container flex-1 p-4 flex flex-col gap-4"
+          data-lenis-prevent
+        >
           {messages.map((msg, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className={`flex ${msg.role === "user" ? "justify-end" : "w-full"}`}
             >
-              <div className={`chat-bubble ${msg.role === "user" ? "chat-bubble-user" : "chat-bubble-assistant"}`}>
+              <div
+                className={`chat-bubble ${msg.role === "user" ? "chat-bubble-user" : "chat-bubble-assistant"}`}
+              >
                 {msg.role === "user" ? (
                   <p className="m-0 whitespace-pre-wrap">{msg.content}</p>
                 ) : (
@@ -361,7 +410,10 @@ export default function ChatWidget() {
           {/* Loading Indicator */}
           {isLoading && (
             <div className="flex items-center gap-2 py-1 select-none">
-              <FontAwesomeIcon icon={faDiamond} className="w-3.5 h-3.5 text-accent spinning-diamond" />
+              <FontAwesomeIcon
+                icon={faDiamond}
+                className="w-3.5 h-3.5 text-accent spinning-diamond"
+              />
               <span className="text-xs text-secondary">thinking...</span>
             </div>
           )}
@@ -375,13 +427,15 @@ export default function ChatWidget() {
             className="chat-input-field flex-1 px-3 py-2 border border-solid"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && !isLoading && !isTyping && chat()}
+            onKeyDown={(e) =>
+              e.key === "Enter" && !isLoading && !isTyping && chat()
+            }
             placeholder="Type your message..."
             disabled={isLoading || isTyping}
           />
-          
+
           {isLoading || isTyping ? (
-            <button 
+            <button
               className="chat-stop-btn w-9 h-9 flex items-center justify-center border-0 cursor-pointer"
               onClick={handleStopResponse}
               title="Stop response"
@@ -389,7 +443,7 @@ export default function ChatWidget() {
               <FontAwesomeIcon icon={faStop} className="w-4 h-4" />
             </button>
           ) : (
-            <button 
+            <button
               className="chat-send-btn w-9 h-9 flex items-center justify-center border-0 cursor-pointer"
               onClick={chat}
               disabled={!message.trim()}

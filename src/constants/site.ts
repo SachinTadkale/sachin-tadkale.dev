@@ -11,7 +11,7 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/in/sachin-tadkale",
     twitter: "https://x.com/_SachinTadkale_",
   },
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/resume/Sachin_Tadkale_Full_Stack_Developer.pdf",
   url: "https://sachin-tadkale.dev",
 };
 

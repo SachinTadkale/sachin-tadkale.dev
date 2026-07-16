@@ -3,7 +3,6 @@
   background-color: var(--color-bg-secondary);
   display: flex;
   flex-direction: column;
-  pointer-events: none;
 }
 
 .gallery-carousel__viewport {
@@ -39,7 +38,6 @@
   padding: 1.25rem;
   border-top: 1px solid var(--color-border);
   background-color: var(--color-bg-secondary);
-  pointer-events: auto;
 }
 
 @media (min-width: 640px) {

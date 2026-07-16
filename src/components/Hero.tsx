@@ -9,9 +9,11 @@ import { Button } from "@/components/ui/Button";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import Image from "next/image";
+import ResumeModal from "@/components/ResumeModal";
 import "./Hero.css";
 
 export function Hero() {
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const reducedMotion = useReducedMotion();
   const headlineLines = [
     "Engineering reliable software today.",
@@ -64,8 +66,7 @@ export function Hero() {
               </Button>
               <Button
                 variant="secondary"
-                href={siteConfig.resumeUrl}
-                download
+                onClick={() => setIsResumeOpen(true)}
                 data-cursor="pointer"
               >
                 View Resume
@@ -107,6 +108,10 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+      />
     </section>
   );
 }

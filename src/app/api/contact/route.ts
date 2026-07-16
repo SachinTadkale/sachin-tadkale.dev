@@ -6,14 +6,36 @@ export async function POST(request: Request) {
     const { name, email, subject, message } = body;
 
     if (!name || !email || !subject || !message) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+      return NextResponse.json({ success: false, message: "Missing required fields" }, { status: 400 });
     }
 
-    // Stub: wire to Resend, Formspree, or another provider when ready.
-    console.log("[Contact form submission]", { name, email, subject, message });
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+    const res = await fetch(`${apiUrl}/api/v1/contact`, {
+      method: "POST",
+      body: JSON.stringify({ name, email, subject, message }),
+      headers: { "Content-Type": "application/json" },
+    });
 
-    return NextResponse.json({ success: true });
-  } catch {
-    return NextResponse.json({ error: "Invalid request" }, { status: 400 });
+    const data = await res.json();
+    if (res.ok) {
+      return NextResponse.json({ success: true, message: data.message || "Message sent successfully." });
+    } else {
+      let errorMessage = "Unable to send your message.";
+      if (Array.isArray(data.detail)) {
+        errorMessage = data.detail.map((err: any) => `${err.loc[err.loc.length - 1]}: ${err.msg}`).join(", ");
+      } else if (typeof data.detail === "string") {
+        errorMessage = data.detail;
+      } else if (data.message) {
+        errorMessage = data.message;
+      }
+      
+      return NextResponse.json(
+        { success: false, message: errorMessage },
+        { status: res.status }
+      );
+    }
+  } catch (error) {
+    console.error("Error in contact forwarding:", error);
+    return NextResponse.json({ success: false, message: "Unable to send your message." }, { status: 500 });
   }
 }

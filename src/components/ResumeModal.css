@@ -1,0 +1,167 @@
+/* Resume Modal CSS */
+
+.resume-modal-overlay-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Backdrop Overlay styling with premium blur */
+.resume-modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(43, 42, 40, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+}
+
+/* Modal Box - Premium theme-matching layout */
+.resume-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 50rem;
+  height: 90vh;
+  background-color: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1.5rem 4rem rgba(28, 43, 74, 0.15);
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 !important;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Header style matching case studies and navigation */
+.resume-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.resume-modal-header__title h3 {
+  margin: 0.25rem 0 0 0;
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.resume-modal-badge {
+  font-family: var(--font-sans);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  padding: 0.1rem 0.4rem;
+  width: fit-content;
+  border-radius: 0;
+  display: block;
+}
+
+.resume-modal-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Button style matching site's buttons */
+.resume-modal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 0 !important; /* Strict zero border-radius */
+  height: 2.25rem;
+  padding: 0 1rem;
+  border: 1px solid var(--color-border);
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.resume-modal-btn--download {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.resume-modal-btn--download:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.resume-modal-btn--close {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  width: 2.25rem;
+  padding: 0;
+}
+
+.resume-modal-btn--close:hover {
+  background-color: rgba(28, 43, 74, 0.05);
+  color: var(--color-accent);
+  border-color: var(--color-text-secondary);
+}
+
+/* Body / Iframe Area */
+.resume-modal-body {
+  flex: 1;
+  background-color: var(--color-bg-tertiary);
+  overflow: hidden;
+  position: relative;
+}
+
+.resume-modal-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: var(--color-bg-tertiary);
+}
+
+/* Responsive adjustment for Mobile screens */
+@media (max-width: 767px) {
+  .resume-modal-overlay-wrapper {
+    padding: 0;
+  }
+
+  .resume-modal-container {
+    height: 100%;
+    border: none;
+  }
+
+  .resume-modal-header {
+    padding: 0.875rem 1rem;
+  }
+
+  .resume-modal-btn .btn-text {
+    display: none; /* Keep only icons on mobile */
+  }
+
+  .resume-modal-btn {
+    padding: 0;
+    width: 2.25rem;
+  }
+}

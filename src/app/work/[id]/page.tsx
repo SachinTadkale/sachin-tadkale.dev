@@ -144,9 +144,11 @@ export default async function CaseStudyPage({
           <Link
             href="/#work"
             className="case-study-details__back flex items-center gap-2 focus-ring py-2"
+            title="Back to portfolio"
+            aria-label="Back to portfolio"
           >
             <FontAwesomeIcon icon={faArrowLeft} />
-            <span>Back to portfolio</span>
+            <span className="hidden sm:inline">Back to portfolio</span>
           </Link>
           <div className="flex flex-wrap gap-3">
             {study.platforms ? (
@@ -163,8 +165,10 @@ export default async function CaseStudyPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="case-study-details__link flex items-center gap-1.5 focus-ring"
+                    title={platform.label}
+                    aria-label={platform.label}
                   >
-                    <span>{platform.label}</span>
+                    <span className="hidden sm:inline">{platform.label}</span>
                     <FontAwesomeIcon
                       icon={isDownload ? faDownload : isGithub ? faGithub : faArrowUpRightFromSquare}
                       className="w-3.5 h-3.5"
@@ -180,8 +184,10 @@ export default async function CaseStudyPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="case-study-details__link flex items-center gap-1.5 focus-ring"
+                    title="Live Site"
+                    aria-label="Live Site"
                   >
-                    <span>Live Site</span>
+                    <span className="hidden sm:inline">Live Site</span>
                     <FontAwesomeIcon
                       icon={faArrowUpRightFromSquare}
                       className="w-3.5 h-3.5"
@@ -194,8 +200,10 @@ export default async function CaseStudyPage({
                     target="_blank"
                     rel="noopener noreferrer"
                     className="case-study-details__link flex items-center gap-1.5 focus-ring"
+                    title="GitHub"
+                    aria-label="GitHub"
                   >
-                    <span>GitHub</span>
+                    <span className="hidden sm:inline">GitHub</span>
                     <FontAwesomeIcon icon={faGithub} className="w-3.5 h-3.5" />
                   </a>
                 )}

@@ -36,7 +36,7 @@ export function Nav() {
       <header
         className={cn(
           "nav-header",
-          scrolled ? "nav-header--scrolled" : "nav-header--transparent"
+          scrolled ? "nav-header--scrolled" : "nav-header--transparent",
         )}
       >
         <nav

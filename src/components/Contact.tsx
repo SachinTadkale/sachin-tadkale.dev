@@ -10,6 +10,7 @@ import {
   faMapLocationDot,
   faPhone,
   faPhoneVolume,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import { SocialLinks } from "@/components/icons/SocialLinks";
 import { fadeUp } from "@/lib/animations";
@@ -24,10 +25,12 @@ export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
+  const [statusMessage, setStatusMessage] = useState("");
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
+    setStatusMessage("");
 
     try {
       const formData = new FormData(e.currentTarget);
@@ -37,14 +40,26 @@ export function Contact() {
         headers: { "Content-Type": "application/json" },
       });
 
-      if (res.ok) {
+      const data = await res.json();
+      if (res.ok && data.success) {
         setStatus("sent");
+        setStatusMessage(
+          data.message || "Message sent — thank you! I'll be in touch soon.",
+        );
         (e.target as HTMLFormElement).reset();
+
+        setTimeout(() => {
+          setStatus("idle");
+        }, 1000);
       } else {
         setStatus("error");
+        setStatusMessage(
+          data.message || "Something went wrong. Please email me directly.",
+        );
       }
     } catch {
       setStatus("error");
+      setStatusMessage("Unable to send your message. Please try again later.");
     }
   }
 
@@ -157,7 +172,7 @@ export function Contact() {
                     type="text"
                     required
                     autoComplete="name"
-                    className="contact__input focus-ring px-4 py-3.5"
+                    className="contact__input px-4 py-3.5"
                     placeholder=" "
                   />
                   <label htmlFor="name" className="contact__label">
@@ -172,7 +187,7 @@ export function Contact() {
                     type="email"
                     required
                     autoComplete="email"
-                    className="contact__input focus-ring px-4 py-3.5"
+                    className="contact__input px-4 py-3.5"
                     placeholder=" "
                   />
                   <label htmlFor="email" className="contact__label">
@@ -187,7 +202,7 @@ export function Contact() {
                   name="subject"
                   type="text"
                   required
-                  className="contact__input focus-ring px-4 py-3.5"
+                  className="contact__input px-4 py-3.5"
                   placeholder=" "
                 />
                 <label htmlFor="subject" className="contact__label">
@@ -201,7 +216,7 @@ export function Contact() {
                   name="message"
                   required
                   rows={5}
-                  className="contact__input contact__textarea focus-ring px-4 py-3.5"
+                  className="contact__input contact__textarea px-4 py-3.5"
                   placeholder=" "
                 />
                 <label htmlFor="message" className="contact__label">
@@ -212,22 +227,32 @@ export function Contact() {
               <div className="flex">
                 <Button
                   type="submit"
-                  disabled={status === "sending"}
+                  disabled={status === "sending" || status === "sent"}
                   data-cursor="pointer"
-                  className="w-full sm:w-auto"
+                  className="w-full flex items-center justify-center gap-2"
                 >
-                  {status === "sending" ? "Sending…" : "Send Message"}
+                  {status === "sending" && (
+                    <>
+                      Sending…{" "}
+                      <FontAwesomeIcon
+                        icon={faSpinner}
+                        className="animate-spin h-4 w-4"
+                      />
+                    </>
+                  )}
+                  {status === "sent" && "Sent!"}
+                  {status !== "sending" && status !== "sent" && "Send Message"}
                 </Button>
               </div>
 
               {status === "sent" && (
                 <p className="contact__status--success" role="status">
-                  Message sent — thank you! I&apos;ll be in touch soon.
+                  {statusMessage}
                 </p>
               )}
               {status === "error" && (
                 <p className="contact__status--error" role="alert">
-                  Something went wrong. Please email me directly.
+                  {statusMessage}
                 </p>
               )}
             </form>

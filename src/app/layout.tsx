@@ -5,6 +5,9 @@ import ChatWidget from "@/components/ChatWidget";
 import { siteConfig } from "@/lib/content";
 import "@/lib/fontawesome";
 import "./globals.css";
+import { PostHogProvider } from "@/components/PostHogProvider";
+import PostHogPageview from "@/components/PostHogPageview";
+import ConsentBanner from "@/components/ConsentBanner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -143,21 +146,25 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${newsreader.variable} h-full scroll-smooth`}
+      className={`${inter.variable} ${newsreader.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <body
-        className="min-h-full font-sans antialiased"
+        className="font-sans antialiased"
         suppressHydrationWarning
       >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-        <LenisProvider>
-          {children}
-          <ChatWidget />
-        </LenisProvider>
+        <PostHogProvider>
+          <PostHogPageview />
+          <LenisProvider>
+            {children}
+            <ChatWidget />
+            <ConsentBanner />
+          </LenisProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
