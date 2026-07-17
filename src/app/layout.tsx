@@ -80,6 +80,16 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: siteConfig.title,
     description: siteConfig.description,
@@ -117,7 +127,7 @@ export default function RootLayout({
     url: siteConfig.url,
     email: siteConfig.email,
     telephone: siteConfig.phone,
-    jobTitle: "AI Engineer & Software Developer",
+    jobTitle: "Full Stack Developer",
     sameAs: [
       siteConfig.social.github,
       siteConfig.social.linkedin,

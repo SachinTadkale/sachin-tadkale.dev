@@ -13,6 +13,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "./ChatWidget.css";
 import ReactMarkdown from "react-markdown";
+import { useChat } from "@/hooks/useChat";
 
 interface Message {
   role: "user" | "assistant";
@@ -109,16 +110,9 @@ function parseMarkdown(content: string) {
 }
 
 export default function ChatWidget() {
+  const { messages: historyMessages, isLoading, sendMessage, addMessage, clearChat } = useChat();
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      role: "assistant",
-      content:
-        "Hi! I'm Sara, Sachin's AI assistant. Ask me anything about Sachin's background, skills, or portfolio!",
-    },
-  ]);
-  const [isLoading, setIsLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
   const [displayedResponse, setDisplayedResponse] = useState("");
 
@@ -126,6 +120,13 @@ export default function ChatWidget() {
   const abortControllerRef = useRef<AbortController | null>(null);
   const typingTimerRef = useRef<NodeJS.Timeout | null>(null);
   const fullResponseRef = useRef("");
+
+  // Map default welcome message with history messages
+  const welcomeMessage = {
+    role: "assistant" as const,
+    content: "Hi! I'm Sara, Sachin's AI assistant. Ask me anything about Sachin's background, skills, or portfolio!",
+  };
+  const messages = [welcomeMessage, ...historyMessages];
 
   // Scroll to bottom when messages or typing updates
   useEffect(() => {
@@ -159,11 +160,8 @@ export default function ChatWidget() {
         const delay = 40 + Math.random() * 60;
         typingTimerRef.current = setTimeout(typeNextWord, delay);
       } else {
-        // Finished typing
-        setMessages((prev) => [
-          ...prev,
-          { role: "assistant", content: fullText },
-        ]);
+        // Finished typing -> save to history
+        addMessage("assistant", fullText);
         setDisplayedResponse("");
         setIsTyping(false);
       }
@@ -188,22 +186,12 @@ export default function ChatWidget() {
 
     // 3. Save whatever was generated/typed so far
     if (isTyping && displayedResponse.trim()) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: displayedResponse + " [Response paused by user]",
-        },
-      ]);
+      addMessage("assistant", displayedResponse + " [Response paused by user]");
     } else if (isLoading) {
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: "[Response cancelled]" },
-      ]);
+      addMessage("assistant", "[Response cancelled]");
     }
 
     setDisplayedResponse("");
-    setIsLoading(false);
     setIsTyping(false);
   };
 
@@ -212,114 +200,29 @@ export default function ChatWidget() {
     if (!message.trim()) return;
 
     const userMessage = message;
-    setMessages((prev) => [...prev, { role: "user", content: userMessage }]);
     setMessage("");
-    setIsLoading(true);
 
     // Set up AbortController for request cancellation
     const controller = new AbortController();
     abortControllerRef.current = controller;
 
     try {
-      const data = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL || "https://api.sachin-tadkale.dev"}/api/v1/chat`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ message: userMessage }),
-          signal: controller.signal,
-        },
-      );
-
-      if (!data.ok) throw new Error("Failed to generate response");
-
-      const reader = data.body?.getReader();
-      if (!reader) throw new Error("No response body reader");
-
-      const decoder = new TextDecoder();
-      let done = false;
-      let accumulatedResponse = "";
-      let displayedResponseText = "";
-      let isFirstChunk = true;
-
-      // Simple character-by-character print loop
-      const printNextChar = () => {
-        if (displayedResponseText.length < accumulatedResponse.length) {
-          displayedResponseText +=
-            accumulatedResponse[displayedResponseText.length];
-          setDisplayedResponse(displayedResponseText);
-
-          if (isFirstChunk) {
-            setIsLoading(false);
-            setIsTyping(true);
-            isFirstChunk = false;
-          }
-
-          setTimeout(printNextChar, 10); // Print next character in 10ms
-        } else if (!done) {
-          // Wait for more data to stream in
-          setTimeout(printNextChar, 50);
-        } else {
-          // Finished streaming and printing
-          setMessages((prev) => [
-            ...prev,
-            { role: "assistant", content: accumulatedResponse },
-          ]);
-          setDisplayedResponse("");
-          setIsTyping(false);
-        }
-      };
-
-      // Start printing loop
-      printNextChar();
-
-      try {
-        while (!done) {
-          const { value, done: doneReading } = await reader.read();
-          if (doneReading) {
-            done = true;
-            break;
-          }
-          if (value) {
-            const chunk = decoder.decode(value, { stream: true });
-            accumulatedResponse += chunk;
-          }
-        }
-      } catch (err) {
-        done = true;
-        throw err;
+      const responseText = await sendMessage(userMessage, controller.signal);
+      if (responseText) {
+        typeResponse(responseText);
       }
-    } catch (error: unknown) {
-      if (error instanceof Error && error.name === "AbortError") {
-        console.log("Request aborted by user");
-        return;
-      }
-      console.error(error);
-      setIsLoading(false);
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: "Sorry, I encountered an error. Please try again.",
-        },
-      ]);
+    } catch (error) {
+      // Error is handled inside useChat hook, fallback UI message appended
+      addMessage("assistant", "Sorry, I encountered an error. Please try again.");
     } finally {
       abortControllerRef.current = null;
     }
   }
 
   // Clear Chat History
-  const clearChat = () => {
+  const handleClearChat = () => {
     handleStopResponse();
-    setMessages([
-      {
-        role: "assistant",
-        content:
-          "Hi! I'm Sara, Sachin's AI assistant. Ask me anything about Sachin's background, skills, or portfolio!",
-      },
-    ]);
+    clearChat();
   };
 
   return (
@@ -361,7 +264,7 @@ export default function ChatWidget() {
           <div className="flex items-center gap-1">
             <button
               className="chat-clear-btn p-1.5 flex items-center justify-center border-0 bg-transparent cursor-pointer"
-              onClick={clearChat}
+              onClick={handleClearChat}
               title="Clear Chat"
             >
               <FontAwesomeIcon icon={faTrash} className="w-3.5 h-3.5" />

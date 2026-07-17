@@ -1,7 +1,5 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
 export async function generateResponse(user_message: string) {
-  const response = await fetch(`${API_URL}/api/v1/chat`, {
+  const response = await fetch("/api/chat", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -11,9 +9,10 @@ export async function generateResponse(user_message: string) {
     }),
   });
 
-  if (!response.ok) {
-    throw new Error("Failed to generate Response");
+  const resData = await response.json();
+  if (!response.ok || !resData.success) {
+    throw new Error(resData.error?.message || "Failed to generate Response");
   }
 
-  return response.json();
+  return resData.data;
 }

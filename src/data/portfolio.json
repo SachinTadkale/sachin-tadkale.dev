@@ -1,0 +1,224 @@
+{
+  "personal": {
+    "name": "Sachin Tadkale",
+    "role": "Full Stack Developer",
+    "location": "Pune, Maharashtra, India",
+    "phone_no": "+91 7498173576",
+    "email": "sachintadkale22@outlook.com"
+  },
+
+  "career_objective": "Build AI-powered software products that solve real business problems through automation, intelligent systems, and modern software engineering.",
+  "summary": "Sachin Tadkale is an Full Stack Developer focused on building intelligent software, AI assistants, and scalable full-stack applications. He enjoys solving real-world problems through automation and modern software architecture while continuously exploring Large Language Models, Agentic AI, FastAPI, and production-ready AI systems.",
+  "current_focus": [
+    "AI Engineering",
+    "Large Language Models (LLMs)",
+    "Agentic AI",
+    "FastAPI",
+    "AI Assistants",
+    "Automation",
+    "Software Architecture"
+  ],
+
+  "skills": {
+    "languages": ["Python", "Java", "TypeScript", "JavaScript"],
+    "frontend": ["Angular", "React", "Next.js", "HTML5", "CSS3", "Bootstrap"],
+    "backend": [
+      "Spring Boot",
+      "FastAPI",
+      "Node.js",
+      "Express",
+      "REST APIs",
+      "Socket.io"
+    ],
+    "mobile": ["Flutter", "Android"],
+    "ai_ml": [
+      "Google Gemini API",
+      "OpenAI API",
+      "LangChain",
+      "RAG",
+      "Tool Calling",
+      "Prompt Engineering",
+      "Structured Outputs",
+      "Ollama",
+      "Hugging Face"
+    ],
+
+    "databases": ["PostgreSQL", "MySQL", "Redis", "Chroma", "Pinecone", "SQL"],
+    "cloud": ["AWS", "Cloudflare", "Vercel"],
+    "devops": ["Docker", "Git", "GitHub", "Kubernetes"]
+  },
+
+  "experience_level": {
+    "Python": "Advanced",
+    "FastAPI": "Advanced",
+    "Spring Boot": "Intermediate",
+    "Angular": "Advanced",
+    "Next.js": "Intermediate",
+    "React": "Intermediate",
+    "Java": "Intermediate",
+    "Docker": "Intermediate"
+  },
+
+  "projects": [
+    {
+      "id": "vyaro",
+      "name": "Vyaro",
+      "category": "Agricultural Marketplace",
+      "status": "Completed & Deployed",
+      "description": "Vyaro is an agricultural marketplace ecosystem developed to connect farmers directly with buyers through web and Android applications.",
+      "problem": "Farmers lacked direct digital channels to sell produce, while buyers struggled to find reliable local suppliers.",
+      "solution": "A full-stack marketplace built using Spring Boot, PostgreSQL, React, and Android with a shared backend serving multiple client applications.",
+      "architecture": "Spring Boot REST API + PostgreSQL + React Web + Native Android App",
+      "key_features": [
+        "Farmer product listings",
+        "Real-time pricing",
+        "Buyer search & filtering",
+        "Shared backend for web and mobile",
+        "Image upload support"
+      ],
+      "tech_stack": {
+        "frontend": ["React", "HTML5", "CSS3", "JavaScript"],
+        "backend": ["Node.js", "Express", "REST APIs"],
+        "database": ["PostgreSQL"]
+      },
+      "github_url": "https://github.com/leaparchy/vyaro-APP/releases/download/v1.0.0/vyaro-v1.0.0.apk",
+      "live_demo_url": "https://vyaro-web-app.vercel.app"
+    },
+
+    {
+      "id": "sara-ai",
+      "name": "Sara AI",
+      "category": "AI Assistant",
+      "status": "Research & Active Development",
+      "description": "Sara AI is a personal AI assistant focused on automating real-world workflows through tool calling and intelligent automation.",
+      "problem": "General-purpose chatbots cannot directly automate productivity workflows or integrate deeply with external tools.",
+      "solution": "An AI assistant built using FastAPI, Python, structured outputs, and tool calling to execute external workflows reliably.",
+      "architecture": "Next.js + FastAPI + Gemini/OpenAI + Tool Calling",
+      "key_features": [
+        "Streaming responses",
+        "Conversation memory",
+        "Tool calling",
+        "Structured JSON outputs",
+        "Schema validation"
+      ],
+      "tech_stack": {
+        "frontend": ["HTML", "CSS", "JavaScript"],
+        "backend": ["FastAPI", "Python"],
+        "ai": ["Google Gemini API", "OpenAI API", "Pydantic"],
+        "others": ["Docker"]
+      },
+      "github_url": "",
+      "live_demo_url": "https://saraai-eight.vercel.app/chat"
+    },
+
+    {
+      "id": "worklyn",
+      "name": "Worklyn",
+      "category": "Team Collaboration Platform",
+      "status": "Private Prototype",
+      "description": "Worklyn is a productivity workspace that combines messaging, video calling, and task management into one platform.",
+      "problem": "Teams often rely on multiple disconnected collaboration tools.",
+      "solution": "A centralized collaboration platform using Node.js, WebSockets, WebRTC, PostgreSQL, and React.",
+      "architecture": "React + Node.js + Express + Socket.io + PostgreSQL + WebRTC",
+      "key_features": [
+        "Real-time messaging",
+        "Video calling",
+        "Task board",
+        "Live synchronization"
+      ],
+      "tech_stack": {
+        "frontend": ["React", "HTML", "CSS", "JavaScript"],
+        "backend": ["Node.js", "Express", "Socket.io"],
+        "database": ["PostgreSQL"],
+        "others": ["WebRTC", "Docker", "Docker Compose"]
+      },
+      "github_url": "https://github.com/SachinTadkale/worklyn_frontend",
+      "live_demo_url": ""
+    }
+  ],
+
+  "experience": [
+    {
+      "company": "MyNextHire Pvt. Ltd.",
+      "role": "Software Developer I",
+      "duration": "Feb 2026 – Present",
+      "summary": "Working on frontend development, feature implementation, and user experience improvements.",
+      "responsibilities": [
+        "Develop responsive applications using Next.js.",
+        "Build reusable Angular components.",
+        "Implement new features and fix production bugs."
+      ],
+      "tech_stack": ["Angular", "Next.js", "TypeScript", "Bootstrap", "Git"]
+    },
+
+    {
+      "company": "Microgemini Technologies Pvt. Ltd.",
+      "role": "Web Developer Intern",
+      "duration": "Feb 2025 – Aug 2025",
+      "summary": "Worked on full-stack web applications and REST API development.",
+      "responsibilities": [
+        "Developed Spring Boot backend services.",
+        "Integrated SQL databases.",
+        "Built inventory and hospital management systems."
+      ],
+      "tech_stack": ["Spring Boot", "Angular", "SQL", "REST APIs", "Git"]
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "Master of Computer Applications (MCA)",
+      "university": "Savitribai Phule Pune University",
+      "cgpa": "8.10",
+      "year": "2024–2026"
+    },
+    {
+      "degree": "Bachelor of Computer Applications (BCA)",
+      "university": "Savitribai Phule Pune University",
+      "cgpa": "9.10",
+      "year": "2021–2024"
+    }
+  ],
+
+  "services": [
+    {
+      "title": "AI Solutions Development",
+      "description": "Design and build AI-powered applications using Large Language Models and modern AI frameworks."
+    },
+    {
+      "title": "Full Stack Development",
+      "description": "Develop scalable web applications using modern frontend and backend technologies."
+    },
+    {
+      "title": "Business Process Automation",
+      "description": "Automate repetitive workflows using AI, APIs, and intelligent software solutions."
+    }
+  ],
+
+  "achievements": [
+    "Built multiple full-stack applications from idea to deployment.",
+    "Developing production-ready AI assistants using modern LLM technologies.",
+    "Actively learning Agentic AI and production AI architecture."
+  ],
+
+  "blogs": [],
+
+  "faq": [],
+
+  "resume": {
+    "available": true,
+    "url": ""
+  },
+
+  "contact": {
+    "email": "sachintadkale22@outlook.com",
+    "phone": "+91 7498173576",
+    "location": "Pune, Maharashtra, India"
+  },
+
+  "socials": {
+    "github": "https://github.com/SachinTadkale",
+    "linkedin": "https://linkedin.com/in/sachin-tadkale",
+    "twitter": "https://x.com/_SachinTadkale_"
+  }
+}

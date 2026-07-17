@@ -109,7 +109,7 @@ export default async function CaseStudyPage({
         author: {
           "@type": "Person",
           name: siteConfig.name,
-          jobTitle: "AI Engineer & Software Developer",
+          jobTitle: "Full Stack Developer",
           url: siteConfig.url,
         },
         publisher: {
@@ -157,7 +157,9 @@ export default async function CaseStudyPage({
                   platform.label.toLowerCase().includes("android") ||
                   platform.label.toLowerCase().includes("apk") ||
                   platform.url.endsWith(".apk");
-                const isGithub = platform.url.toLowerCase().includes("github.com");
+                const isGithub = platform.url
+                  .toLowerCase()
+                  .includes("github.com");
                 return (
                   <a
                     key={platform.label}
@@ -170,7 +172,13 @@ export default async function CaseStudyPage({
                   >
                     <span className="hidden sm:inline">{platform.label}</span>
                     <FontAwesomeIcon
-                      icon={isDownload ? faDownload : isGithub ? faGithub : faArrowUpRightFromSquare}
+                      icon={
+                        isDownload
+                          ? faDownload
+                          : isGithub
+                            ? faGithub
+                            : faArrowUpRightFromSquare
+                      }
                       className="w-3.5 h-3.5"
                     />
                   </a>
