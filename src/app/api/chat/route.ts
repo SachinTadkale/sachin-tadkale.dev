@@ -30,8 +30,7 @@ export async function POST(request: NextRequest) {
     return successResponse({ response: aiResponse });
   } catch (error: any) {
     logger.error("Error in POST /api/chat", error);
-    const isDev = process.env.NODE_ENV !== "production";
-    const message = isDev && error instanceof Error ? error.message : "An unexpected error occurred while generating a response.";
+    const message = error?.message || String(error) || "An unexpected error occurred while generating a response.";
     return errorResponse(message, "INTERNAL_SERVER_ERROR", 500);
   }
 }
