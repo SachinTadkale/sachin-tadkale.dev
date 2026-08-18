@@ -2,7 +2,7 @@ export const experience = [
   {
     role: "Software Developer I",
     company: "MyNextHire Pvt. Ltd.",
-    dates: "Feb 2026 – Present",
+    dates: "Feb 2026 – Aug 2026",
     summary:
       "Focused on frontend feature delivery and user experience optimization across web applications.",
     bullets: [

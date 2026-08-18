@@ -29,7 +29,7 @@ export const techStack: TechStackGroup[] = [
       { name: "Angular" },
       { name: "Bootstrap" },
       { name: "FastAPI" },
-      { name: "Flutter" },
+      // { name: "Flutter" },
       { name: "Java" },
       { name: "MySQL" },
       { name: "Next.js" },
@@ -53,8 +53,8 @@ export const techStack: TechStackGroup[] = [
       { name: "Git" },
       { name: "GitHub" },
       { name: "Kubernetes" },
-      { name: "Redis" },
-      { name: "Vercel" },
+      // { name: "Redis" },
+      // { name: "Vercel" },
     ],
   },
   {
@@ -63,13 +63,13 @@ export const techStack: TechStackGroup[] = [
     description:
       "Technologies I'm using to build and explore AI-powered applications.",
     items: [
-      { name: "Chroma" },
+      // { name: "Chroma" },
       { name: "Hugging Face" },
       { name: "LangChain" },
       { name: "Ollama" },
       { name: "OpenAI API" },
-      { name: "Pinecone" },
-      { name: "RAG pipelines" },
+      // { name: "Pinecone" },
+      // { name: "RAG pipelines" },
     ],
   },
 ];

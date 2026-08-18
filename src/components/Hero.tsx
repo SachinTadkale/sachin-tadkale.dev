@@ -28,7 +28,7 @@ export function Hero() {
               variants={heroLineStagger}
             >
               <motion.div variants={heroLine}>
-                <SectionLabel>FULL-STACK DEVELOPER</SectionLabel>
+                <SectionLabel>AI FULL-STACK DEVELOPER</SectionLabel>
               </motion.div>
 
               <h1 className="heading-hero">
@@ -46,7 +46,7 @@ export function Hero() {
               animate="visible"
               className="prose-width body-lg mt-6"
             >
-              Full-stack engineer passionate about building products that are
+              AI Full-stack engineer passionate about building products that are
               simple to use, reliable in production, and ready to grow.
               Currently expanding into AI applications with LLMs, RAG, and
               intelligent workflows.
