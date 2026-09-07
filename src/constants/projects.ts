@@ -68,7 +68,7 @@ export const caseStudies: CaseStudy[] = [
       "A unified agricultural platform connecting farmers directly to buyers via web, mobile, and marketing channels.",
     description:
       "I built Vyaro, an agricultural marketplace ecosystem comprising a responsive web app, an Android application, and a marketing website. The platform allows farmers to showcase and sell produce directly to buyers, bypassing traditional middlemen.",
-    tags: ["React", "Node", "PostgreSQL", "Flutter", "REST APIs"],
+    tags: ["Flutter", "React", "PostgreSQL", "REST APIs", "Springboot"],
     image: "/project-images/vyaro_web_overview_page.webp",
     imageAlt: "Vyaro agricultural marketplace interface mockup",
     imagePosition: "right",
@@ -195,7 +195,7 @@ export const caseStudies: CaseStudy[] = [
       "An active research project building a workflow-focused personal AI assistant using FastAPI and tool calling.",
     description:
       "I am developing Sara AI, a personal assistant aimed at automating specific daily workflows. Rather than functioning as a general chat platform, it uses structured tool-calling pipelines to connect directly with external productivity APIs.",
-    tags: ["FastAPI", "Python", "OpenAI", "Tool Calling", "API Integration"],
+    tags: ["Angular", "FastAPI", "OpenAI", "Python",  "Tool Calling"],
     image: "/project-images/SaraAI_1.webp",
     imageAlt: "Sara AI assistant workflow execution interface",
     imagePosition: "left",

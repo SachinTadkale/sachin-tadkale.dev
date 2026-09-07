@@ -20,16 +20,9 @@
   ],
 
   "skills": {
-    "languages": ["Python", "Java", "TypeScript", "JavaScript"],
+    "languages": ["Python", "Java", "TypeScript"],
     "frontend": ["Angular", "React", "Next.js", "HTML5", "CSS3", "Bootstrap"],
-    "backend": [
-      "Spring Boot",
-      "FastAPI",
-      "Node.js",
-      "Express",
-      "REST APIs",
-      "Socket.io"
-    ],
+    "backend": ["Spring Boot", "FastAPI", "REST APIs"],
     "mobile": ["Flutter", "Android"],
     "ai_ml": [
       "Google Gemini API",
@@ -43,7 +36,7 @@
       "Hugging Face"
     ],
 
-    "databases": ["PostgreSQL", "MySQL", "Redis", "Chroma", "Pinecone", "SQL"],
+    "databases": ["PostgreSQL", "MySQL", "Redis", "Chroma", "SQL"],
     "cloud": ["AWS", "Cloudflare", "Vercel"],
     "devops": ["Docker", "Git", "GitHub", "Kubernetes"]
   },
@@ -77,8 +70,8 @@
         "Image upload support"
       ],
       "tech_stack": {
-        "frontend": ["React", "HTML5", "CSS3", "JavaScript"],
-        "backend": ["Node.js", "Express", "REST APIs"],
+        "frontend": ["React", "HTML5", "CSS3"],
+        "backend": ["Spring Boot", "REST APIs"],
         "database": ["PostgreSQL"]
       },
       "github_url": "https://github.com/leaparchy/vyaro-APP/releases/download/v1.0.0/vyaro-v1.0.0.apk",
@@ -93,7 +86,7 @@
       "description": "Sara AI is a personal AI assistant focused on automating real-world workflows through tool calling and intelligent automation.",
       "problem": "General-purpose chatbots cannot directly automate productivity workflows or integrate deeply with external tools.",
       "solution": "An AI assistant built using FastAPI, Python, structured outputs, and tool calling to execute external workflows reliably.",
-      "architecture": "Next.js + FastAPI + Gemini/OpenAI + Tool Calling",
+      "architecture": "Angular + FastAPI + Gemini/OpenAI + Tool Calling",
       "key_features": [
         "Streaming responses",
         "Conversation memory",
@@ -102,7 +95,7 @@
         "Schema validation"
       ],
       "tech_stack": {
-        "frontend": ["HTML", "CSS", "JavaScript"],
+        "frontend": ["Angular", "CSS3", "Tailwind CSS"],
         "backend": ["FastAPI", "Python"],
         "ai": ["Google Gemini API", "OpenAI API", "Pydantic"],
         "others": ["Docker"]
@@ -127,7 +120,7 @@
         "Live synchronization"
       ],
       "tech_stack": {
-        "frontend": ["React", "HTML", "CSS", "JavaScript"],
+        "frontend": ["React", "HTML", "CSS", "Tailwind CSS"],
         "backend": ["Node.js", "Express", "Socket.io"],
         "database": ["PostgreSQL"],
         "others": ["WebRTC", "Docker", "Docker Compose"]

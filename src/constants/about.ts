@@ -63,7 +63,7 @@ export const techStack: TechStackGroup[] = [
     description:
       "Technologies I'm using to build and explore AI-powered applications.",
     items: [
-      // { name: "Chroma" },
+      { name: "Chroma" },
       { name: "Hugging Face" },
       { name: "LangChain" },
       { name: "Ollama" },
