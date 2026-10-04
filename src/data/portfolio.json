@@ -21,7 +21,7 @@
 
   "skills": {
     "languages": ["Python", "Java", "TypeScript"],
-    "frontend": ["Angular", "React", "Next.js", "HTML5", "CSS3", "Bootstrap"],
+    "frontend": ["Angular", "Next.js", "HTML5", "CSS3", "Bootstrap"],
     "backend": ["Spring Boot", "FastAPI", "REST APIs"],
     "mobile": ["Flutter", "Android"],
     "ai_ml": [
@@ -101,7 +101,7 @@
         "others": ["Docker"]
       },
       "github_url": "",
-      "live_demo_url": "https://saraai-eight.vercel.app/chat"
+      "live_demo_url": "https://sara-ui-black.vercel.app"
     },
 
     {
