@@ -195,12 +195,12 @@ export const caseStudies: CaseStudy[] = [
       "An active research project building a workflow-focused personal AI assistant using FastAPI and tool calling.",
     description:
       "I am developing Sara AI, a personal assistant aimed at automating specific daily workflows. Rather than functioning as a general chat platform, it uses structured tool-calling pipelines to connect directly with external productivity APIs.",
-    tags: ["Angular", "FastAPI", "OpenAI", "Python",  "Tool Calling"],
+    tags: ["Angular", "FastAPI", "OpenAI", "Python", "Tool Calling"],
     image: "/project-images/SaraAI_1.webp",
     imageAlt: "Sara AI assistant workflow execution interface",
     imagePosition: "left",
     platforms: [
-      { label: "Live Prototype", url: "https://saraai-eight.vercel.app/chat" },
+      { label: "Live Prototype", url: "https://sara-ui-black.vercel.app" },
     ],
     details: {
       metaTitle: "Sara AI Assistant - Engineering Case Study",
@@ -276,12 +276,14 @@ export const caseStudies: CaseStudy[] = [
           "Prompt engineering is a developer discipline that requires rigorous validation setups rather than simple ad-hoc testing.",
       },
       technologies: [
-        { category: "Frontend", items: ["HTML5", "CSS3", "JavaScript"] },
+        {
+          category: "Frontend",
+          items: ["HTML5", "CSS3", "Bootstrap", "Typescript", "Angular"],
+        },
         {
           category: "Backend & AI",
           items: ["FastAPI", "Python", "OpenAI API", "Pydantic"],
         },
-        { category: "Deployment", items: ["Docker", "Linux VM"] },
       ],
       gallery: [
         {
